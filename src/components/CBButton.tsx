@@ -6,6 +6,7 @@ import {
   Animated,
   StyleSheet,
 } from 'react-native';
+import * as Haptics from 'expo-haptics';
 
 interface CBButtonProps {
   title: string;
@@ -26,6 +27,7 @@ const CBButton: FC<CBButtonProps> = ({ title }) => {
       toValue: 1,
       useNativeDriver: true,
     }).start();
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
   };
 
   const animatedStyle = {
