@@ -9,15 +9,10 @@ import {
   ScrollView,
 } from 'react-native';
 import CBButton from './src/components/CBButton';
+import Home from './src/screens/Home';
 
 export default function App() {
-  return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <CBButton title='Add payment method' />
-
-      <StatusBar style='auto' />
-    </ScrollView>
-  );
+  return <Home />;
 }
 
 const styles = StyleSheet.create({
