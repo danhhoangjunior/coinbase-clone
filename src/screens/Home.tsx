@@ -11,6 +11,7 @@ import {
   Image,
 } from 'react-native';
 import CBButton from '../components/CBButton';
+import CBWatchList from '../components/CBWatchlist';
 
 const Home: FC = () => {
   return (
@@ -23,8 +24,7 @@ const Home: FC = () => {
         <Text style={styles.title}>Welcome to Coinbase!</Text>
         <Text style={styles.subtitle}>Make your first investment today</Text>
         <CBButton title='Add payment method' />
-        <Text style={styles.watchlistText}>Watchlist</Text>
-        <View style={styles.watchlistContainer}></View>
+        <CBWatchList />
         <StatusBar style='auto' />
       </ScrollView>
     </SafeAreaView>
@@ -52,21 +52,6 @@ const styles = StyleSheet.create({
     fontSize: 17,
     marginBottom: 24,
     color: 'rgb(92, 98, 110)',
-  },
-  watchlistText: {
-    alignSelf: 'flex-start',
-    fontWeight: 'bold',
-    fontSize: 21,
-    marginTop: 48,
-    marginBottom: 8,
-    marginLeft: '7.5%',
-  },
-  watchlistContainer: {
-    width: '85%',
-    borderWidth: 1,
-    height: 350,
-    borderRadius: 8,
-    borderColor: '#ccc',
   },
 });
 
