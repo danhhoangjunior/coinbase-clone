@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import {
   TouchableHighlight,
   View,
@@ -7,7 +7,11 @@ import {
   StyleSheet,
 } from 'react-native';
 
-const CBButton = (props) => {
+interface CBButtonProps {
+  title: string;
+}
+
+const CBButton: FC<CBButtonProps> = ({ title }) => {
   const animatedValue = new Animated.Value(1);
 
   const handlePressIn = () => {
@@ -36,7 +40,7 @@ const CBButton = (props) => {
         activeOpacity={0.9}
       >
         <View style={styles.btn}>
-          <Text style={styles.btnText}>Add payment method</Text>
+          <Text style={styles.btnText}>{title}</Text>
         </View>
       </TouchableHighlight>
     </Animated.View>

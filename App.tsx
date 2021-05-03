@@ -13,7 +13,8 @@ import CBButton from './src/components/CBButton';
 export default function App() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <CBButton />
+      <CBButton title='Add payment method' />
+
       <StatusBar style='auto' />
     </ScrollView>
   );
