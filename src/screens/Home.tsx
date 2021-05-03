@@ -14,8 +14,8 @@ import CBButton from '../components/CBButton';
 
 const Home: FC = () => {
   return (
-    <ScrollView>
-      <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container}>
+      <ScrollView contentContainerStyle={{ alignItems: 'center' }}>
         <Image
           style={styles.image}
           source={{ uri: 'https://i.imgur.com/9EEaSaS.png' }}
@@ -23,10 +23,11 @@ const Home: FC = () => {
         <Text style={styles.title}>Welcome to Coinbase!</Text>
         <Text style={styles.subtitle}>Make your first investment today</Text>
         <CBButton title='Add payment method' />
-
+        <Text style={styles.watchlistText}>Watchlist</Text>
+        <View style={styles.watchlistContainer}></View>
         <StatusBar style='auto' />
-      </SafeAreaView>
-    </ScrollView>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
@@ -34,7 +35,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'flex-start',
   },
   image: {
@@ -52,6 +52,21 @@ const styles = StyleSheet.create({
     fontSize: 17,
     marginBottom: 24,
     color: 'rgb(92, 98, 110)',
+  },
+  watchlistText: {
+    alignSelf: 'flex-start',
+    fontWeight: 'bold',
+    fontSize: 21,
+    marginTop: 48,
+    marginBottom: 8,
+    marginLeft: '7.5%',
+  },
+  watchlistContainer: {
+    width: '85%',
+    borderWidth: 1,
+    height: 350,
+    borderRadius: 8,
+    borderColor: '#ccc',
   },
 });
 
