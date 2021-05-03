@@ -12,7 +12,7 @@ const CBButton = (props) => {
 
   const handlePressIn = () => {
     Animated.spring(animatedValue, {
-      toValue: 0.97,
+      toValue: 0.98,
       useNativeDriver: true,
     }).start();
   };
@@ -33,6 +33,7 @@ const CBButton = (props) => {
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
         style={{ borderRadius: 10 }}
+        activeOpacity={0.9}
       >
         <View style={styles.btn}>
           <Text style={styles.btnText}>Add payment method</Text>
