@@ -20,13 +20,12 @@ import * as watchlistActions from '../store/actions/watchlist';
 
 const CBWatchList: FC = () => {
   const coinData = useSelector((state) => state.watchlist.coinData);
-  const [myCoinData, setMyCoinData] = useState(coinData);
+
   const dispatch = useDispatch();
 
   const loadWatchlist = useCallback(async () => {
     try {
       dispatch(watchlistActions.fetchCoinData());
-      setMyCoinData(coinData);
     } catch (err) {
       console.log(err);
     }
@@ -68,14 +67,14 @@ const CBWatchList: FC = () => {
     >
       <Text style={styles.watchlistText}>Watchlist</Text>
       <View
-        style={[{ height: myCoinData.length * 70 }, styles.watchlistContainer]}
+        style={[{ height: coinData.length * 70 }, styles.watchlistContainer]}
       >
         <DraggableFlatList
-          data={myCoinData}
-          keyExtractor={(item) => item.id}
+          data={coinData}
+          keyExtractor={(item) => item.id.toString()}
           scrollEnabled={false}
           onDragEnd={({ data }) => {
-            setMyCoinData(data);
+            dispatch(watchlistActions.updateCoinData(data));
           }}
           renderItem={renderItem}
         />

@@ -42,3 +42,12 @@ export const fetchCoinData = () => {
     }
   };
 };
+
+export const updateCoinData = (newData) => {
+  return async (dispatch) => {
+    dispatch({
+      type: SET_DATA,
+      coinData: newData,
+    });
+  };
+};
