@@ -8,6 +8,9 @@ import {
   FlatList,
 } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
+import DraggableFlatList, {
+  RenderItemParams,
+} from 'react-native-draggable-flatlist';
 
 import vars from '../env';
 import Coin from '../models/Coin';
@@ -16,11 +19,13 @@ import * as watchlistActions from '../store/actions/watchlist';
 
 const CBWatchList: FC = () => {
   const coinData = useSelector((state) => state.watchlist.coinData);
+  const [myCoinData, setMyCoinData] = useState(coinData);
   const dispatch = useDispatch();
 
   const loadWatchlist = useCallback(async () => {
     try {
       await dispatch(watchlistActions.fetchCoinData());
+      setMyCoinData(coinData);
     } catch (err) {
       console.log(err);
     }
@@ -29,6 +34,27 @@ const CBWatchList: FC = () => {
   useEffect(() => {
     loadWatchlist();
   }, [loadWatchlist]);
+
+  type Item = {
+    id: number;
+    name: string;
+    symbol: string;
+    price: number;
+    percentChange: number;
+  };
+
+  const renderItem = useCallback(({ item, drag }: RenderItemParams<Item>) => {
+    return (
+      <CBWatchListItem
+        id={item.id}
+        name={item.name}
+        symbol={item.symbol}
+        price={item.price}
+        percentChange={item.percentChange}
+        drag={drag}
+      />
+    );
+  }, []);
 
   return (
     <View
@@ -42,20 +68,14 @@ const CBWatchList: FC = () => {
       <View
         style={[{ height: coinData.length * 70 }, styles.watchlistContainer]}
       >
-        <FlatList
-          data={coinData}
+        <DraggableFlatList
+          data={myCoinData}
+          keyExtractor={(item) => item.id}
           scrollEnabled={false}
-          renderItem={(itemData) => {
-            return (
-              <CBWatchListItem
-                id={itemData.item.id}
-                name={itemData.item.name}
-                symbol={itemData.item.symbol}
-                price={itemData.item.price}
-                percentChange={itemData.item.percentChange}
-              />
-            );
+          onDragEnd={({ data }) => {
+            setMyCoinData(data);
           }}
+          renderItem={renderItem}
         />
       </View>
     </View>
