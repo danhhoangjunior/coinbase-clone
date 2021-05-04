@@ -12,4 +12,5 @@ export default (state = initialState, action) => {
         coinData: action.coinData,
       };
   }
+  return state;
 };
