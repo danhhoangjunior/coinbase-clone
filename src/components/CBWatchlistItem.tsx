@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import {
   TouchableHighlight,
   View,
@@ -8,7 +8,19 @@ import {
   Image,
 } from 'react-native';
 
-const CBWatchListItem: FC = () => {
+interface WatchlistItemProps {
+  name: string;
+  symbol: string;
+  price: number;
+  percentChange: number;
+}
+
+const CBWatchListItem: FC<WatchlistItemProps> = ({
+  name,
+  symbol,
+  price,
+  percentChange,
+}) => {
   return (
     <View style={styles.listItem}>
       <View style={{ flexDirection: 'row' }}>
@@ -19,14 +31,14 @@ const CBWatchListItem: FC = () => {
               'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/BTC_Logo.svg/2000px-BTC_Logo.svg.png',
           }}
         />
-        <View style={styles.name}>
-          <Text style={styles.nameText}>Bitcoin</Text>
-          <Text style={styles.tickerText}>BTC</Text>
+        <View>
+          <Text style={styles.nameText}>{name}</Text>
+          <Text style={styles.tickerText}>{symbol}</Text>
         </View>
       </View>
-      <View style={styles.price}>
-        <Text style={styles.priceText}>$57,550.00</Text>
-        <Text style={styles.changeText}>+1.43%</Text>
+      <View>
+        <Text style={styles.priceText}>{price.toFixed(2)}</Text>
+        <Text style={styles.changeText}>{percentChange.toFixed(2)}%</Text>
       </View>
     </View>
   );
@@ -44,6 +56,7 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
     marginRight: 16,
+    marginTop: 2,
   },
   nameText: {
     fontSize: 16,

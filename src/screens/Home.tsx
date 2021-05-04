@@ -16,14 +16,17 @@ import CBWatchList from '../components/CBWatchlist';
 const Home: FC = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView contentContainerStyle={{ alignItems: 'center' }}>
+      <ScrollView
+        contentContainerStyle={{ alignItems: 'center' }}
+        showsVerticalScrollIndicator={false}
+      >
         <Image
           style={styles.image}
           source={{ uri: 'https://i.imgur.com/9EEaSaS.png' }}
         />
         <Text style={styles.title}>Welcome to Coinbase!</Text>
         <Text style={styles.subtitle}>Make your first investment today</Text>
-        <CBButton title='Add payment method' />
+        <CBButton title='Buy crypto' />
         <CBWatchList />
         <StatusBar style='auto' />
       </ScrollView>
