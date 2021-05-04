@@ -12,6 +12,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import DraggableFlatList, {
   RenderItemParams,
 } from 'react-native-draggable-flatlist';
+import * as Haptics from 'expo-haptics';
 
 import vars from '../env';
 import Coin from '../models/Coin';
@@ -73,6 +74,9 @@ const CBWatchList: FC = () => {
           data={coinData}
           keyExtractor={(item) => item.id.toString()}
           scrollEnabled={false}
+          onDragBegin={() =>
+            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
+          }
           onDragEnd={({ data }) => {
             dispatch(watchlistActions.updateCoinData(data));
           }}
