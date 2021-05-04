@@ -6,7 +6,7 @@ export const SET_DATA = 'SET_DATA';
 
 export const fetchCoinData = () => {
   return async (dispatch, getState) => {
-    const coins = ['BTC', 'ETH', 'EOS', 'BCH', 'ADA', 'DOGE', 'XRP'];
+    const coins = ['BTC', 'ETH', 'EOS', 'BCH', 'ADA', 'DOGE', 'XRP', 'USDT'];
 
     try {
       //   const response = await fetch(

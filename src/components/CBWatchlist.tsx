@@ -35,7 +35,7 @@ const CBWatchList: FC = () => {
       style={{
         width: '100%',
         alignSelf: 'flex-start',
-        marginLeft: '7.5%',
+        marginLeft: '6%',
       }}
     >
       <Text style={styles.watchlistText}>Watchlist</Text>
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   watchlistContainer: {
-    width: '85%',
+    width: '88%',
     borderWidth: 1,
     borderRadius: 8,
     borderColor: '#ccc',
