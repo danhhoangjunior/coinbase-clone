@@ -29,7 +29,7 @@ const CBWatchListItem: FC<WatchlistItemProps> = ({
   return (
     <TouchableOpacity onLongPress={drag}>
       <View style={styles.listItem}>
-        <View style={{ flexDirection: 'row' }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <Image
             style={styles.logo}
             source={{
@@ -78,22 +78,21 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
     marginRight: 16,
-    marginTop: 2,
   },
   nameText: {
-    fontSize: 16,
+    fontSize: 17,
   },
   tickerText: {
     color: 'rgb(79, 85, 102)',
-    fontSize: 15,
+    fontSize: 16,
   },
   priceText: {
-    fontSize: 16,
+    fontSize: 17,
     textAlign: 'right',
   },
   changeText: {
     textAlign: 'right',
-    fontSize: 15,
+    fontSize: 16,
   },
 });
 

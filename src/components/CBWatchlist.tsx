@@ -85,16 +85,16 @@ const CBWatchList: FC = () => {
 
 const styles = StyleSheet.create({
   watchlistText: {
-    fontWeight: 'bold',
+    fontWeight: '600',
     fontSize: 21,
-    marginTop: 48,
-    marginBottom: 8,
+    marginTop: 64,
+    marginBottom: 10,
   },
   watchlistContainer: {
     width: '88%',
     borderWidth: 1,
     borderRadius: 8,
-    borderColor: '#ccc',
+    borderColor: 'rgb(223, 223, 223)',
   },
 });
 
