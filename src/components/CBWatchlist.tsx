@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState, useCallback } from 'react';
 import {
   TouchableHighlight,
   View,
@@ -7,22 +7,28 @@ import {
   StyleSheet,
   FlatList,
 } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
+
 import vars from '../env';
 import Coin from '../models/Coin';
 import CBWatchListItem from './CBWatchlistItem';
+import * as watchlistActions from '../store/actions/watchlist';
 
 const CBWatchList: FC = () => {
-  //const [coinData, setCoinData] = useState<Coin[]>([]);
-  const coinData: Coin[] = [];
+  const coinData = useSelector((state) => state.watchlist.coinData);
+  const dispatch = useDispatch();
+
+  const loadWatchlist = useCallback(async () => {
+    try {
+      await dispatch(watchlistActions.fetchCoinData());
+    } catch (err) {
+      console.log(err);
+    }
+  }, [dispatch]);
 
   useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    const coins = ['BTC', 'ETH', 'EOS', 'BCH', 'ADA'];
-  };
-  const numItems = 5;
+    loadWatchlist();
+  }, [loadWatchlist]);
 
   return (
     <View
@@ -33,17 +39,22 @@ const CBWatchList: FC = () => {
       }}
     >
       <Text style={styles.watchlistText}>Watchlist</Text>
-      <View style={[{ height: numItems * 70 }, styles.watchlistContainer]}>
+      <View
+        style={[{ height: coinData.length * 70 }, styles.watchlistContainer]}
+      >
         <FlatList
           data={coinData}
-          keyExtractor={(item) => item.symbol}
+          scrollEnabled={false}
           renderItem={(itemData) => {
-            <CBWatchListItem
-              name={itemData.item.name}
-              symbol={itemData.item.symbol}
-              price={itemData.item.price}
-              percentChange={itemData.item.percentChange}
-            />;
+            return (
+              <CBWatchListItem
+                id={itemData.item.id}
+                name={itemData.item.name}
+                symbol={itemData.item.symbol}
+                price={itemData.item.price}
+                percentChange={itemData.item.percentChange}
+              />
+            );
           }}
         />
       </View>

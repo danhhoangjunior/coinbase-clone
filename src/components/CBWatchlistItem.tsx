@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 
 interface WatchlistItemProps {
+  id: number;
   name: string;
   symbol: string;
   price: number;
@@ -16,6 +17,7 @@ interface WatchlistItemProps {
 }
 
 const CBWatchListItem: FC<WatchlistItemProps> = ({
+  id,
   name,
   symbol,
   price,
@@ -27,8 +29,7 @@ const CBWatchListItem: FC<WatchlistItemProps> = ({
         <Image
           style={styles.logo}
           source={{
-            uri:
-              'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/BTC_Logo.svg/2000px-BTC_Logo.svg.png',
+            uri: `https://s2.coinmarketcap.com/static/img/coins/64x64/${id.toString()}.png`,
           }}
         />
         <View>
@@ -37,8 +38,24 @@ const CBWatchListItem: FC<WatchlistItemProps> = ({
         </View>
       </View>
       <View>
-        <Text style={styles.priceText}>{price.toFixed(2)}</Text>
-        <Text style={styles.changeText}>{percentChange.toFixed(2)}%</Text>
+        <Text style={styles.priceText}>
+          $
+          {price.toLocaleString(undefined, {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          })}
+        </Text>
+        <Text
+          style={[
+            {
+              color:
+                percentChange > 0 ? 'rgb(11, 130, 82)' : 'rgb(204, 26, 46)',
+            },
+            styles.changeText,
+          ]}
+        >
+          {percentChange.toFixed(2)}%
+        </Text>
       </View>
     </View>
   );
@@ -67,9 +84,9 @@ const styles = StyleSheet.create({
   },
   priceText: {
     fontSize: 16,
+    textAlign: 'right',
   },
   changeText: {
-    color: 'green',
     textAlign: 'right',
     fontSize: 15,
   },
