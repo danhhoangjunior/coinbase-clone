@@ -6,6 +6,7 @@ import {
   Animated,
   StyleSheet,
   FlatList,
+  LogBox,
 } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import DraggableFlatList, {
@@ -24,7 +25,7 @@ const CBWatchList: FC = () => {
 
   const loadWatchlist = useCallback(async () => {
     try {
-      await dispatch(watchlistActions.fetchCoinData());
+      dispatch(watchlistActions.fetchCoinData());
       setMyCoinData(coinData);
     } catch (err) {
       console.log(err);
@@ -32,6 +33,7 @@ const CBWatchList: FC = () => {
   }, [dispatch]);
 
   useEffect(() => {
+    LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
     loadWatchlist();
   }, [loadWatchlist]);
 
@@ -66,7 +68,7 @@ const CBWatchList: FC = () => {
     >
       <Text style={styles.watchlistText}>Watchlist</Text>
       <View
-        style={[{ height: coinData.length * 70 }, styles.watchlistContainer]}
+        style={[{ height: myCoinData.length * 70 }, styles.watchlistContainer]}
       >
         <DraggableFlatList
           data={myCoinData}
