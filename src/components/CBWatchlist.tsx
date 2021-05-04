@@ -94,7 +94,8 @@ const styles = StyleSheet.create({
     width: '88%',
     borderWidth: 1,
     borderRadius: 8,
-    borderColor: 'rgb(223, 223, 223)',
+    borderColor: 'rgb(223, 225, 226)',
+    backgroundColor: 'white',
   },
 });
 
