@@ -21,31 +21,6 @@ const CBWatchList: FC = () => {
 
   const fetchData = async () => {
     const coins = ['BTC', 'ETH', 'EOS', 'BCH', 'ADA'];
-    fetch(
-      `https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest`,
-      {
-        headers: {
-          'X-CMC_PRO_API_KEY': vars.apiKey,
-        },
-      }
-    )
-      .then((res) => res.json())
-      .then((response) => {
-        coins.forEach((coin) => {
-          const data = response.data.find((val) => val.symbol === coin);
-          coinData.push(
-            new Coin(
-              data.name,
-              data.symbol,
-              data.quote.USD.price,
-              data.quote.USD.percent_change_24h
-            )
-          );
-        });
-      })
-      .then(() => {
-        console.log(coinData);
-      });
   };
   const numItems = 5;
 
