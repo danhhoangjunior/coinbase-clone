@@ -8,26 +8,8 @@ import {
   FlatList,
 } from 'react-native';
 import vars from '../env';
+import Coin from '../models/Coin';
 import CBWatchListItem from './CBWatchlistItem';
-
-class Coin {
-  name: string;
-  symbol: string;
-  price: number;
-  percentChange: number;
-
-  constructor(
-    name: string,
-    symbol: string,
-    price: number,
-    percentChange: number
-  ) {
-    this.name = name;
-    this.symbol = symbol;
-    this.price = price;
-    this.percentChange = percentChange;
-  }
-}
 
 const CBWatchList: FC = () => {
   //const [coinData, setCoinData] = useState<Coin[]>([]);
