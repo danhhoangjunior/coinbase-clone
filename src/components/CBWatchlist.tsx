@@ -8,9 +8,14 @@ import * as Haptics from 'expo-haptics';
 
 import CBWatchListItem from './CBWatchlistItem';
 import * as watchlistActions from '../store/actions/watchlist';
+import { CoinState } from '../store/reducers/watchlist';
+
+interface RootState {
+  watchlist: CoinState;
+}
 
 const CBWatchList: FC = () => {
-  const coinData = useSelector((state) => state.watchlist.coinData);
+  const coinData = useSelector((state: RootState) => state.watchlist.coinData);
 
   const dispatch = useDispatch();
 

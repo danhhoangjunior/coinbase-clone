@@ -1,3 +1,6 @@
+import { Action } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { CoinState } from '../reducers/watchlist';
 import vars from '../../env';
 import Coin from '../../models/Coin';
 import dummy from './DUMMY';
@@ -5,8 +8,8 @@ import dummy from './DUMMY';
 export const SET_DATA = 'SET_DATA';
 
 export const fetchCoinData = () => {
-  return async (dispatch, getState) => {
-    const coins = ['BTC', 'ETH', 'EOS', 'BCH', 'XRP', 'LTC'];
+  return async (dispatch: ThunkDispatch<CoinState, void, Action>) => {
+    const coins = ['BTC', 'ETH', 'EOS', 'BCH', 'XRP', 'DOGE'];
 
     try {
       const response = await fetch(
@@ -43,8 +46,8 @@ export const fetchCoinData = () => {
   };
 };
 
-export const updateCoinData = (newData) => {
-  return async (dispatch) => {
+export const updateCoinData = (newData: Coin[]) => {
+  return async (dispatch: ThunkDispatch<CoinState, void, Action>) => {
     dispatch({
       type: SET_DATA,
       coinData: newData,

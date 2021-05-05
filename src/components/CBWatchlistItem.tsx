@@ -1,12 +1,10 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import {
   TouchableHighlight,
   View,
   Text,
-  Animated,
   StyleSheet,
   Image,
-  TouchableOpacity,
 } from 'react-native';
 
 interface WatchlistItemProps {
@@ -32,6 +30,9 @@ const CBWatchListItem: FC<WatchlistItemProps> = ({
     <TouchableHighlight
       underlayColor={isActive ? 'white' : '#FAFBFE'}
       onLongPress={drag}
+      onPress={() => {
+        console.log(symbol);
+      }}
     >
       <View
         style={
