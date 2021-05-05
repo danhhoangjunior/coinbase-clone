@@ -6,19 +6,19 @@ export const SET_DATA = 'SET_DATA';
 
 export const fetchCoinData = () => {
   return async (dispatch, getState) => {
-    const coins = ['BTC', 'ETH', 'EOS', 'BCH', 'DOGE', 'XRP', 'USDT'];
+    const coins = ['BTC', 'ETH', 'EOS', 'BCH', 'XRP', 'USDT'];
 
     try {
-      // const response = await fetch(
-      //   `https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest`,
-      //   {
-      //     headers: {
-      //       'X-CMC_PRO_API_KEY': vars.apiKey,
-      //     },
-      //   }
-      // );
-      const resData = dummy;
-      // const resData = await response.json();
+      const response = await fetch(
+        `https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest`,
+        {
+          headers: {
+            'X-CMC_PRO_API_KEY': vars.apiKey,
+          },
+        }
+      );
+      // const resData = dummy;
+      const resData = await response.json();
       const coinData: Coin[] = [];
       coins.forEach((coin) => {
         const data = resData.data.find((val: Coin) => val.symbol === coin);

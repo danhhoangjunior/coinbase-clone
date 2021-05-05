@@ -33,7 +33,11 @@ const CBWatchListItem: FC<WatchlistItemProps> = ({
       underlayColor={isActive ? 'white' : '#FAFBFE'}
       onLongPress={drag}
     >
-      <View style={isActive ? styles.activeListItem : styles.listItem}>
+      <View
+        style={
+          isActive ? [styles.activeListItem, styles.listItem] : styles.listItem
+        }
+      >
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <Image
             style={styles.logo}
@@ -80,13 +84,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   activeListItem: {
-    flexDirection: 'row',
-    width: '100%',
-    height: 70,
-    padding: 16,
-    justifyContent: 'space-between',
     backgroundColor: 'white',
-    opacity: 0.95,
+    opacity: 0.9,
     shadowColor: 'black',
     shadowRadius: 15,
     shadowOpacity: 0.05,
