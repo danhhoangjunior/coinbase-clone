@@ -9,19 +9,19 @@ export const fetchCoinData = () => {
     const coins = ['BTC', 'ETH', 'EOS', 'BCH', 'DOGE', 'XRP', 'USDT'];
 
     try {
-      //   const response = await fetch(
-      //     `https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest`,
-      //     {
-      //       headers: {
-      //         'X-CMC_PRO_API_KEY': vars.apiKey,
-      //       },
-      //     }
-      //   );
+      // const response = await fetch(
+      //   `https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest`,
+      //   {
+      //     headers: {
+      //       'X-CMC_PRO_API_KEY': vars.apiKey,
+      //     },
+      //   }
+      // );
       const resData = dummy;
-      //const resData = await response.json();
+      // const resData = await response.json();
       const coinData: Coin[] = [];
       coins.forEach((coin) => {
-        const data = resData.data.find((val) => val.symbol === coin);
+        const data = resData.data.find((val: Coin) => val.symbol === coin);
         coinData.push(
           new Coin(
             data.id,

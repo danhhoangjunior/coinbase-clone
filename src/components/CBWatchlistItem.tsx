@@ -16,6 +16,7 @@ interface WatchlistItemProps {
   price: number;
   percentChange: number;
   drag: any;
+  isActive: any;
 }
 
 const CBWatchListItem: FC<WatchlistItemProps> = ({
@@ -25,10 +26,14 @@ const CBWatchListItem: FC<WatchlistItemProps> = ({
   price,
   percentChange,
   drag,
+  isActive,
 }) => {
   return (
-    <TouchableOpacity onLongPress={drag}>
-      <View style={styles.listItem}>
+    <TouchableHighlight
+      underlayColor={isActive ? 'white' : '#FAFBFE'}
+      onLongPress={drag}
+    >
+      <View style={isActive ? styles.activeListItem : styles.listItem}>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <Image
             style={styles.logo}
@@ -62,7 +67,7 @@ const CBWatchListItem: FC<WatchlistItemProps> = ({
           </Text>
         </View>
       </View>
-    </TouchableOpacity>
+    </TouchableHighlight>
   );
 };
 
@@ -73,6 +78,18 @@ const styles = StyleSheet.create({
     height: 70,
     padding: 16,
     justifyContent: 'space-between',
+  },
+  activeListItem: {
+    flexDirection: 'row',
+    width: '100%',
+    height: 70,
+    padding: 16,
+    justifyContent: 'space-between',
+    backgroundColor: 'white',
+    opacity: 0.95,
+    shadowColor: 'black',
+    shadowRadius: 15,
+    shadowOpacity: 0.05,
   },
   logo: {
     width: 32,

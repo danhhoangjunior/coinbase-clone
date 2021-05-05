@@ -45,18 +45,22 @@ const CBWatchList: FC = () => {
     percentChange: number;
   };
 
-  const renderItem = useCallback(({ item, drag }: RenderItemParams<Item>) => {
-    return (
-      <CBWatchListItem
-        id={item.id}
-        name={item.name}
-        symbol={item.symbol}
-        price={item.price}
-        percentChange={item.percentChange}
-        drag={drag}
-      />
-    );
-  }, []);
+  const renderItem = useCallback(
+    ({ item, drag, isActive }: RenderItemParams<Item>) => {
+      return (
+        <CBWatchListItem
+          id={item.id}
+          name={item.name}
+          symbol={item.symbol}
+          price={item.price}
+          percentChange={item.percentChange}
+          drag={drag}
+          isActive={isActive}
+        />
+      );
+    },
+    []
+  );
 
   return (
     <View
