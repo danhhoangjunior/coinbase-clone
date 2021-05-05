@@ -27,7 +27,6 @@ const CBButton: FC<CBButtonProps> = ({ title }) => {
       toValue: 1,
       useNativeDriver: true,
     }).start();
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
   };
 
   const animatedStyle = {
@@ -40,6 +39,9 @@ const CBButton: FC<CBButtonProps> = ({ title }) => {
         onPressOut={handlePressOut}
         style={{ borderRadius: 10 }}
         activeOpacity={0.9}
+        onPress={() => {
+          Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+        }}
       >
         <View style={styles.btn}>
           <Text style={styles.btnText}>{title}</Text>

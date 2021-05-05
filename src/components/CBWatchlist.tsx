@@ -1,21 +1,11 @@
-import React, { FC, useEffect, useState, useCallback } from 'react';
-import {
-  TouchableHighlight,
-  View,
-  Text,
-  Animated,
-  StyleSheet,
-  FlatList,
-  LogBox,
-} from 'react-native';
+import React, { FC, useEffect, useCallback } from 'react';
+import { View, Text, StyleSheet, LogBox } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import DraggableFlatList, {
   RenderItemParams,
 } from 'react-native-draggable-flatlist';
 import * as Haptics from 'expo-haptics';
 
-import vars from '../env';
-import Coin from '../models/Coin';
 import CBWatchListItem from './CBWatchlistItem';
 import * as watchlistActions from '../store/actions/watchlist';
 
