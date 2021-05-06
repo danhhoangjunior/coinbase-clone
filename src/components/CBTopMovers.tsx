@@ -2,22 +2,24 @@ import React, { FC, useEffect, useCallback } from 'react';
 import { View, Text, StyleSheet, FlatList, Dimensions } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 
-import * as watchlistActions from '../store/actions/watchlist';
-import { CoinState } from '../store/reducers/watchlist';
+import * as topMoversActions from '../store/actions/topmovers';
+import { TopMoversState } from '../store/reducers/topmovers';
 import CBTopMoversListItem from './CBTopMoversListItem';
 
 interface RootState {
-  watchlist: CoinState;
+  topMovers: TopMoversState;
 }
 
 const CBTopMovers: FC = () => {
-  const coinData = useSelector((state: RootState) => state.watchlist.coinData);
+  const coinData = useSelector(
+    (state: RootState) => state.topMovers.topMoversData
+  );
 
   const dispatch = useDispatch();
 
   const loadTopMovers = useCallback(async () => {
     try {
-      dispatch(watchlistActions.fetchTopMoversData());
+      dispatch(topMoversActions.fetchTopMoversData());
     } catch (err) {
       console.log(err);
     }

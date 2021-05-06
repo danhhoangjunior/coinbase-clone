@@ -1,18 +1,18 @@
 import { AnyAction } from 'redux';
 import Coin from '../../models/Coin';
-import { SET_DATA } from '../actions/topmovers';
+import { SET_TOPMOVERS_DATA } from '../actions/topmovers';
 
-export interface CoinState {
+export interface TopMoversState {
   topMoversData: Coin[];
 }
 
-const initialState: CoinState = {
+const initialState: TopMoversState = {
   topMoversData: [],
 };
 
 export default (state = initialState, action: AnyAction) => {
   switch (action.type) {
-    case SET_DATA:
+    case SET_TOPMOVERS_DATA:
       return {
         topMoversData: action.coinData,
       };

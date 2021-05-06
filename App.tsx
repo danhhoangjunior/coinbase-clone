@@ -13,10 +13,12 @@ import { Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk';
 
 import watchlistReducer from './src/store/reducers/watchlist';
+import topMoversReducer from './src/store/reducers/topmovers';
 import Home from './src/screens/Home';
 
 const rootReducer = combineReducers({
   watchlist: watchlistReducer,
+  topMovers: topMoversReducer,
 });
 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk));

@@ -1,13 +1,13 @@
 import { Action } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
-import { CoinState } from '../reducers/watchlist';
+import { TopMoversState } from '../reducers/topmovers';
 import Coin from '../../models/Coin';
 import cmpData from './CoinMarketCapData';
 
-export const SET_DATA = 'SET_DATA';
+export const SET_TOPMOVERS_DATA = 'SET_TOPMOVERS_DATA';
 
 export const fetchTopMoversData = () => {
-  return async (dispatch: ThunkDispatch<CoinState, void, Action>) => {
+  return async (dispatch: ThunkDispatch<TopMoversState, void, Action>) => {
     try {
       // Fetch all coins available on Coinbase
       var availableCoins: Set<String[]> = new Set([]);
@@ -52,7 +52,7 @@ export const fetchTopMoversData = () => {
       }
 
       dispatch({
-        type: SET_DATA,
+        type: SET_TOPMOVERS_DATA,
         coinData: coinData,
       });
     } catch (err) {
