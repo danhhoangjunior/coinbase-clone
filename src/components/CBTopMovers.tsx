@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useCallback } from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Dimensions } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 
 import * as watchlistActions from '../store/actions/watchlist';
@@ -48,7 +48,7 @@ const CBTopMovers: FC = () => {
         keyExtractor={(item) => item.id.toString()}
         horizontal
         showsHorizontalScrollIndicator={false}
-        snapToInterval={140}
+        snapToOffsets={[...Array(coinData.length)].map((x, i) => 155 + i)}
         decelerationRate={0}
         snapToAlignment='center'
         contentContainerStyle={styles.topMoversContainer}
