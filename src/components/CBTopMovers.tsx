@@ -43,24 +43,26 @@ const CBTopMovers: FC = () => {
       }}
     >
       <Text style={styles.topMoversText}>Top movers</Text>
-      <View style={styles.topMoversContainer}>
-        <FlatList
-          data={coinData}
-          keyExtractor={(item) => item.id.toString()}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          renderItem={(itemData) => {
-            return (
-              <CBTopMoversListItem
-                id={itemData.item.id}
-                symbol={itemData.item.symbol}
-                price={itemData.item.price}
-                percentChange={itemData.item.percentChange}
-              />
-            );
-          }}
-        />
-      </View>
+      <FlatList
+        data={coinData}
+        keyExtractor={(item) => item.id.toString()}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        snapToInterval={140}
+        decelerationRate={0}
+        snapToAlignment='center'
+        contentContainerStyle={styles.topMoversContainer}
+        renderItem={(itemData) => {
+          return (
+            <CBTopMoversListItem
+              id={itemData.item.id}
+              symbol={itemData.item.symbol}
+              price={itemData.item.price}
+              percentChange={itemData.item.percentChange}
+            />
+          );
+        }}
+      />
     </View>
   );
 };
@@ -75,7 +77,7 @@ const styles = StyleSheet.create({
   },
   topMoversContainer: {
     height: 160,
-    paddingHorizontal: '6%',
+    paddingLeft: '6%',
   },
 });
 

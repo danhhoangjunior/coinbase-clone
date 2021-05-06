@@ -49,7 +49,7 @@ const CBTopMoversListItem: FC<TopMoversListItemProps> = ({
       onPress={() => {
         console.log(symbol);
       }}
-      style={{ width: 140, marginRight: 20 }}
+      style={{ width: 143, marginRight: 20 }}
     >
       <Animated.View style={[styles.listItem, animatedStyle]}>
         <Image
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 8,
     borderColor: 'rgb(223, 225, 226)',
-    paddingHorizontal: 15,
+    paddingHorizontal: 16,
     paddingVertical: 25,
   },
   logo: {
