@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     marginLeft: '6%',
   },
   topMoversContainer: {
-    height: 150,
+    height: 160,
     paddingHorizontal: '6%',
   },
 });

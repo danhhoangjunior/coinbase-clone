@@ -89,11 +89,11 @@ const styles = StyleSheet.create({
   logo: {
     width: 32,
     height: 32,
-    marginBottom: 12,
+    marginBottom: 16,
   },
   tickerText: {
     fontSize: 15,
-    fontWeight: '500',
+    fontWeight: '600',
     marginRight: 5,
   },
   priceText: {
