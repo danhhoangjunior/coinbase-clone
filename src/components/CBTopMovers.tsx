@@ -46,10 +46,6 @@ const CBTopMovers: FC = () => {
       <Text style={styles.topMoversText}>Top movers</Text>
       <View style={styles.topMoversContainer}>
         <FlatList
-          contentContainerStyle={{
-            width: '250%',
-            justifyContent: 'space-between',
-          }}
           data={coinData}
           keyExtractor={(item) => item.id.toString()}
           horizontal

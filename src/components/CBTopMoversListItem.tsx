@@ -23,11 +23,12 @@ const CBTopMoversListItem: FC<TopMoversListItemProps> = ({
   return (
     <TouchableHighlight
       underlayColor='#FAFBFE'
+      style={styles.listItem}
       onPress={() => {
         console.log(symbol);
       }}
     >
-      <View style={styles.listItem}>
+      <View>
         <Image
           style={styles.logo}
           source={{
@@ -56,13 +57,13 @@ const CBTopMoversListItem: FC<TopMoversListItemProps> = ({
 
 const styles = StyleSheet.create({
   listItem: {
-    height: '100%',
     width: 140,
     borderWidth: 1,
     borderRadius: 8,
     borderColor: 'rgb(223, 225, 226)',
     paddingHorizontal: 15,
     paddingVertical: 25,
+    marginRight: 15,
   },
   logo: {
     width: 32,
