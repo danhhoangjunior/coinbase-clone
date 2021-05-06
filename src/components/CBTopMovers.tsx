@@ -17,7 +17,7 @@ const CBTopMovers: FC = () => {
 
   const loadTopMovers = useCallback(async () => {
     try {
-      dispatch(watchlistActions.fetchCoinData());
+      dispatch(watchlistActions.fetchTopMoversData());
     } catch (err) {
       console.log(err);
     }
