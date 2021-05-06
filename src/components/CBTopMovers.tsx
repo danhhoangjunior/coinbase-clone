@@ -40,7 +40,6 @@ const CBTopMovers: FC = () => {
       style={{
         width: '100%',
         alignSelf: 'flex-start',
-        marginLeft: '6%',
       }}
     >
       <Text style={styles.topMoversText}>Top movers</Text>
@@ -72,9 +71,11 @@ const styles = StyleSheet.create({
     fontSize: 21,
     marginTop: 32,
     marginBottom: 10,
+    marginLeft: '6%',
   },
   topMoversContainer: {
     height: 150,
+    paddingHorizontal: '6%',
   },
 });
 

@@ -5,6 +5,7 @@ import {
   Text,
   StyleSheet,
   Image,
+  Animated,
 } from 'react-native';
 
 interface TopMoversListItemProps {
@@ -20,15 +21,37 @@ const CBTopMoversListItem: FC<TopMoversListItemProps> = ({
   price,
   percentChange,
 }) => {
+  const animatedValue = new Animated.Value(1);
+
+  const handlePressIn = () => {
+    Animated.spring(animatedValue, {
+      toValue: 0.98,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handlePressOut = () => {
+    Animated.spring(animatedValue, {
+      toValue: 1,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const animatedStyle = {
+    transform: [{ scale: animatedValue }],
+  };
+
   return (
     <TouchableHighlight
+      onPressIn={handlePressIn}
+      onPressOut={handlePressOut}
       underlayColor='#FAFBFE'
-      style={styles.listItem}
       onPress={() => {
         console.log(symbol);
       }}
+      style={{ width: 140, marginRight: 20 }}
     >
-      <View>
+      <Animated.View style={[styles.listItem, animatedStyle]}>
         <Image
           style={styles.logo}
           source={{
@@ -46,24 +69,22 @@ const CBTopMoversListItem: FC<TopMoversListItemProps> = ({
           </Text>
         </View>
         <View>
-          <Text style={styles.changeText} numberOfLines={1}>
+          <Text style={styles.changeText} numberOfLines={1} selectable>
             +{percentChange.toFixed(2)}%
           </Text>
         </View>
-      </View>
+      </Animated.View>
     </TouchableHighlight>
   );
 };
 
 const styles = StyleSheet.create({
   listItem: {
-    width: 140,
     borderWidth: 1,
     borderRadius: 8,
     borderColor: 'rgb(223, 225, 226)',
     paddingHorizontal: 15,
     paddingVertical: 25,
-    marginRight: 15,
   },
   logo: {
     width: 32,
