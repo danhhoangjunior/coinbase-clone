@@ -49,7 +49,7 @@ const CBTopMoversListItem: FC<TopMoversListItemProps> = ({
       onPress={() => {
         console.log(symbol);
       }}
-      style={{ width: 143, marginRight: 20 }}
+      style={{ width: 143, marginRight: 17 }}
     >
       <Animated.View style={[styles.listItem, animatedStyle]}>
         <Image
