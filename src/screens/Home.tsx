@@ -11,6 +11,7 @@ import {
   Image,
 } from 'react-native';
 import CBButton from '../components/CBButton';
+import CBTopMovers from '../components/CBTopMovers';
 import CBWatchList from '../components/CBWatchlist';
 
 const Home: FC = () => {
@@ -28,6 +29,7 @@ const Home: FC = () => {
         <Text style={styles.subtitle}>Make your first investment today</Text>
         <CBButton title='Buy crypto' />
         <CBWatchList />
+        <CBTopMovers />
         <StatusBar style='auto' />
       </ScrollView>
     </SafeAreaView>

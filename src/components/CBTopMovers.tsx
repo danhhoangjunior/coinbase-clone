@@ -10,7 +10,7 @@ interface RootState {
   watchlist: CoinState;
 }
 
-const CBWatchList: FC = () => {
+const CBTopMovers: FC = () => {
   const coinData = useSelector((state: RootState) => state.watchlist.coinData);
 
   const dispatch = useDispatch();
@@ -47,9 +47,9 @@ const CBWatchList: FC = () => {
         marginLeft: '6%',
       }}
     >
-      <Text style={styles.watchlistText}>Top movers</Text>
+      <Text style={styles.topMoversText}>Top movers</Text>
       <View
-        style={[{ height: coinData.length * 70 }, styles.watchlistContainer]}
+        style={[{ height: coinData.length * 70 }, styles.topMoversContainer]}
       >
         <FlatList
           data={coinData}
@@ -78,4 +78,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CBWatchList;
+export default CBTopMovers;
