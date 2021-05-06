@@ -2,9 +2,9 @@ import React, { FC, useEffect, useCallback } from 'react';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 
-import CBWatchListItem from './CBWatchlistItem';
 import * as watchlistActions from '../store/actions/watchlist';
 import { CoinState } from '../store/reducers/watchlist';
+import CBTopMoversListItem from './CBTopMoversListItem';
 
 interface RootState {
   watchlist: CoinState;
@@ -35,10 +35,6 @@ const CBTopMovers: FC = () => {
     percentChange: number;
   };
 
-  const renderItem = () => {
-    return <View></View>;
-  };
-
   return (
     <View
       style={{
@@ -48,14 +44,26 @@ const CBTopMovers: FC = () => {
       }}
     >
       <Text style={styles.topMoversText}>Top movers</Text>
-      <View
-        style={[{ height: coinData.length * 70 }, styles.topMoversContainer]}
-      >
+      <View style={styles.topMoversContainer}>
         <FlatList
+          contentContainerStyle={{
+            width: '250%',
+            justifyContent: 'space-between',
+          }}
           data={coinData}
           keyExtractor={(item) => item.id.toString()}
           horizontal
-          renderItem={renderItem}
+          showsHorizontalScrollIndicator={false}
+          renderItem={(itemData) => {
+            return (
+              <CBTopMoversListItem
+                id={itemData.item.id}
+                symbol={itemData.item.symbol}
+                price={itemData.item.price}
+                percentChange={itemData.item.percentChange}
+              />
+            );
+          }}
         />
       </View>
     </View>
@@ -66,15 +74,11 @@ const styles = StyleSheet.create({
   topMoversText: {
     fontWeight: '600',
     fontSize: 21,
-    marginTop: 64,
+    marginTop: 32,
     marginBottom: 10,
   },
   topMoversContainer: {
-    width: '88%',
-    borderWidth: 1,
-    borderRadius: 8,
-    borderColor: 'rgb(223, 225, 226)',
-    backgroundColor: 'white',
+    height: 150,
   },
 });
 
