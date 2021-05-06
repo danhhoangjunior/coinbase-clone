@@ -9,7 +9,7 @@ export const SET_DATA = 'SET_DATA';
 
 export const fetchCoinData = () => {
   return async (dispatch: ThunkDispatch<CoinState, void, Action>) => {
-    const coins = ['BTC', 'ETH', 'EOS', 'BCH', 'XRP', 'DOGE'];
+    const coins = ['ETC', 'EOS', 'XTZ', 'SUSHI', '1INCH', 'XLM'];
 
     try {
       const response = await fetch(

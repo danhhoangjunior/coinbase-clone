@@ -80,6 +80,7 @@ const CBTopMoversListItem: FC<TopMoversListItemProps> = ({
 
 const styles = StyleSheet.create({
   listItem: {
+    width: 143,
     borderWidth: 1,
     borderRadius: 8,
     borderColor: 'rgb(223, 225, 226)',

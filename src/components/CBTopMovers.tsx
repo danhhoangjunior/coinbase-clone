@@ -48,7 +48,7 @@ const CBTopMovers: FC = () => {
         keyExtractor={(item) => item.id.toString()}
         horizontal
         showsHorizontalScrollIndicator={false}
-        snapToOffsets={[...Array(coinData.length)].map((x, i) => 155 + i)}
+        snapToOffsets={[...Array(coinData.length)].map((x, i) => 158 * i + 162)}
         decelerationRate={0}
         snapToAlignment='center'
         contentContainerStyle={styles.topMoversContainer}
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     fontSize: 21,
     marginTop: 32,
     marginBottom: 10,
-    marginLeft: '6%',
+    marginLeft: 25,
   },
   topMoversContainer: {
     height: 160,
