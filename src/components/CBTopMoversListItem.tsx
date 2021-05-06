@@ -9,10 +9,10 @@ import {
 } from 'react-native';
 
 interface TopMoversListItemProps {
-  id: number;
+  id: string;
   symbol: string;
-  price: number;
-  percentChange: number;
+  price: string;
+  percentChange: string;
 }
 
 const CBTopMoversListItem: FC<TopMoversListItemProps> = ({
@@ -62,7 +62,7 @@ const CBTopMoversListItem: FC<TopMoversListItemProps> = ({
           <Text style={styles.tickerText}>{symbol}</Text>
           <Text style={styles.priceText}>
             $
-            {price.toLocaleString(undefined, {
+            {parseFloat(price).toLocaleString(undefined, {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
             })}
@@ -70,7 +70,7 @@ const CBTopMoversListItem: FC<TopMoversListItemProps> = ({
         </View>
         <View>
           <Text style={styles.changeText} numberOfLines={1} selectable>
-            +{percentChange.toFixed(2)}%
+            +{parseFloat(percentChange).toFixed(2)}%
           </Text>
         </View>
       </Animated.View>

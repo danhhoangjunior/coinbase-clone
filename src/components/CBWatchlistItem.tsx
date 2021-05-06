@@ -8,11 +8,11 @@ import {
 } from 'react-native';
 
 interface WatchlistItemProps {
-  id: number;
+  id: string;
   name: string;
   symbol: string;
-  price: number;
-  percentChange: number;
+  price: string;
+  percentChange: string;
   drag: any;
   isActive: any;
 }
@@ -54,7 +54,7 @@ const CBWatchListItem: FC<WatchlistItemProps> = ({
         <View>
           <Text style={styles.priceText}>
             $
-            {price.toLocaleString(undefined, {
+            {parseFloat(price).toLocaleString(undefined, {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
             })}
@@ -63,12 +63,14 @@ const CBWatchListItem: FC<WatchlistItemProps> = ({
             style={[
               {
                 color:
-                  percentChange > 0 ? 'rgb(11, 130, 82)' : 'rgb(204, 26, 46)',
+                  parseFloat(percentChange) > 0
+                    ? 'rgb(11, 130, 82)'
+                    : 'rgb(204, 26, 46)',
               },
               styles.changeText,
             ]}
           >
-            {percentChange.toFixed(2)}%
+            {parseFloat(percentChange).toFixed(2)}%
           </Text>
         </View>
       </View>

@@ -28,11 +28,11 @@ const CBTopMovers: FC = () => {
   }, [loadTopMovers]);
 
   type Item = {
-    id: number;
+    id: string;
     name: string;
     symbol: string;
-    price: number;
-    percentChange: number;
+    price: string;
+    percentChange: string;
   };
 
   return (
@@ -56,6 +56,7 @@ const CBTopMovers: FC = () => {
           return (
             <CBTopMoversListItem
               id={itemData.item.id}
+              name={itemData.item.name}
               symbol={itemData.item.symbol}
               price={itemData.item.price}
               percentChange={itemData.item.percentChange}
