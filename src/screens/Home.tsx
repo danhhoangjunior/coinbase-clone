@@ -29,12 +29,13 @@ const Home: FC = () => {
   const watchlistData = useSelector(
     (state: RootState) => state.watchlist.watchlistData
   );
-
   const topMoversData = useSelector(
     (state: RootState) => state.topMovers.topMoversData
   );
+  const [refreshing, setRefreshing] = React.useState(false);
 
   const dispatch = useDispatch();
+
   const loadData = useCallback(async () => {
     try {
       dispatch(watchlistActions.fetchCoinData());
@@ -49,8 +50,6 @@ const Home: FC = () => {
     loadData();
   }, [loadData]);
 
-  const [refreshing, setRefreshing] = React.useState(false);
-
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
     loadData().then(() => {
@@ -64,7 +63,11 @@ const Home: FC = () => {
         contentContainerStyle={{ alignItems: 'center' }}
         showsVerticalScrollIndicator={false}
         refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          <RefreshControl
+            tintColor='rgb(233, 233, 243)'
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+          />
         }
       >
         <Image
