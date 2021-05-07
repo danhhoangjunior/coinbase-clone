@@ -47,8 +47,8 @@ export const fetchTopMoversData = () => {
               coinID,
               data.name,
               data.symbol,
-              data.priceUsd,
-              data.changePercent24Hr
+              parseFloat(data.priceUsd),
+              parseFloat(data.changePercent24Hr)
             )
           );
         }

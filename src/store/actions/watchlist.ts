@@ -9,7 +9,7 @@ export const SET_WATCHLIST_DATA = 'SET_WATCHLIST_DATA';
 export const fetchCoinData = () => {
   return async (dispatch: ThunkDispatch<WatchlistState, void, Action>) => {
     // Will change when user can favorite coins
-    const coins = ['BTC', 'XRP', 'BCH', 'ETH', 'LINK', 'LTC'];
+    const coins = ['BTC', 'XRP', 'BCH', 'ETH', 'DOGE', 'LTC'];
 
     try {
       const response = await fetch(`https://api.coincap.io/v2/assets`);
@@ -26,8 +26,8 @@ export const fetchCoinData = () => {
             coinID,
             data.name,
             data.symbol,
-            data.priceUsd,
-            data.changePercent24Hr
+            parseFloat(data.priceUsd),
+            parseFloat(data.changePercent24Hr)
           )
         );
       });

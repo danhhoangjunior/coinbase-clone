@@ -11,8 +11,8 @@ import {
 interface TopMoversListItemProps {
   id: string;
   symbol: string;
-  price: string;
-  percentChange: string;
+  price: number;
+  percentChange: number;
 }
 
 const CBTopMoversListItem: FC<TopMoversListItemProps> = ({
@@ -62,7 +62,7 @@ const CBTopMoversListItem: FC<TopMoversListItemProps> = ({
           <Text style={styles.tickerText}>{symbol}</Text>
           <Text style={styles.priceText}>
             $
-            {parseFloat(price).toLocaleString(undefined, {
+            {price.toLocaleString(undefined, {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
             })}
@@ -70,7 +70,7 @@ const CBTopMoversListItem: FC<TopMoversListItemProps> = ({
         </View>
         <View>
           <Text style={styles.changeText} numberOfLines={1} selectable>
-            +{parseFloat(percentChange).toFixed(2)}%
+            +{percentChange.toFixed(2)}%
           </Text>
         </View>
       </Animated.View>

@@ -11,8 +11,8 @@ interface WatchlistItemProps {
   id: number;
   name: string;
   symbol: string;
-  price: string;
-  percentChange: string;
+  price: number;
+  percentChange: number;
   drag: any;
   isActive: any;
 }
@@ -54,7 +54,7 @@ const CBWatchListItem: FC<WatchlistItemProps> = ({
         <View>
           <Text style={styles.priceText}>
             $
-            {parseFloat(price).toLocaleString(undefined, {
+            {price.toLocaleString(undefined, {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
             })}
@@ -63,14 +63,12 @@ const CBWatchListItem: FC<WatchlistItemProps> = ({
             style={[
               {
                 color:
-                  parseFloat(percentChange) > 0
-                    ? 'rgb(11, 130, 82)'
-                    : 'rgb(204, 26, 46)',
+                  percentChange > 0 ? 'rgb(11, 130, 82)' : 'rgb(204, 26, 46)',
               },
               styles.changeText,
             ]}
           >
-            {parseFloat(percentChange).toFixed(2)}%
+            {percentChange.toFixed(2)}%
           </Text>
         </View>
       </View>
