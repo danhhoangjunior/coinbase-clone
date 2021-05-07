@@ -8,6 +8,7 @@ export const SET_WATCHLIST_DATA = 'SET_WATCHLIST_DATA';
 
 export const fetchCoinData = () => {
   return async (dispatch: ThunkDispatch<WatchlistState, void, Action>) => {
+    // Will change when user can favorite coins
     const coins = ['BTC', 'XRP', 'BCH', 'ETH', 'LINK', 'LTC'];
 
     try {
@@ -17,9 +18,12 @@ export const fetchCoinData = () => {
       const coinData: Coin[] = [];
       coins.forEach((coin) => {
         const data = resData.data.find((val: Coin) => val.symbol === coin);
+        // Find ID from CMP data, if it doesn't exist use 1
+        const coinID =
+          cmpData.data.find((coin) => data.symbol === coin.symbol)?.id ?? 1;
         coinData.push(
           new Coin(
-            cmpData.data.find((coin) => data.symbol === coin.symbol).id,
+            coinID,
             data.name,
             data.symbol,
             data.priceUsd,

@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 interface WatchlistItemProps {
-  id: string;
+  id: number;
   name: string;
   symbol: string;
   price: string;

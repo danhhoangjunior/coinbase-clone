@@ -3674,3 +3674,5 @@ let cbData = [
     status_message: '',
   },
 ];
+
+export default cbData;
