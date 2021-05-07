@@ -11,10 +11,12 @@ export const fetchTopMoversData = () => {
     try {
       // Fetch all coins available on Coinbase
       let availableCoins: Set<String[]> = new Set([]);
+
       const coinbaseResponse = await fetch(
         'https://api.pro.coinbase.com/products'
       );
       const coinbaseResponseData = await coinbaseResponse.json();
+
       coinbaseResponseData.filter((coin) => coin.quote_currency === 'USD');
       coinbaseResponseData.forEach((coin) => {
         availableCoins.add(coin.base_currency);

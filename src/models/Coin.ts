@@ -1,16 +1,16 @@
 export default class Coin {
-  id: number;
+  id: string;
   name: string;
   symbol: string;
-  price: number;
-  percentChange: number;
+  price: string;
+  percentChange: string;
 
   constructor(
-    id: number,
+    id: string,
     name: string,
     symbol: string,
-    price: number,
-    percentChange: number
+    price: string,
+    percentChange: string
   ) {
     this.id = id;
     this.name = name;

@@ -1,24 +1,9 @@
-import React, { FC, useEffect, useCallback } from 'react';
-import { View, Text, StyleSheet, FlatList, Dimensions } from 'react-native';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { FC } from 'react';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
 
-import * as topMoversActions from '../store/actions/topmovers';
-import { TopMoversState } from '../store/reducers/topmovers';
 import CBTopMoversListItem from './CBTopMoversListItem';
 
-interface RootState {
-  topMovers: TopMoversState;
-}
-
 const CBTopMovers: FC<any> = ({ coinData }) => {
-  type Item = {
-    id: string;
-    name: string;
-    symbol: string;
-    price: string;
-    percentChange: string;
-  };
-
   return (
     <View
       style={{
@@ -40,7 +25,6 @@ const CBTopMovers: FC<any> = ({ coinData }) => {
           return (
             <CBTopMoversListItem
               id={itemData.item.id}
-              name={itemData.item.name}
               symbol={itemData.item.symbol}
               price={itemData.item.price}
               percentChange={itemData.item.percentChange}

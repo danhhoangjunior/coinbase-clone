@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState, useCallback, useEffect, FC } from 'react';
+import React, { useCallback, useEffect, FC } from 'react';
 import {
   StyleSheet,
   Text,

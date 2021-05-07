@@ -1,6 +1,6 @@
-import React, { FC, useEffect, useCallback } from 'react';
-import { View, Text, StyleSheet, LogBox } from 'react-native';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { FC, useCallback } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import { useDispatch } from 'react-redux';
 import DraggableFlatList, {
   RenderItemParams,
 } from 'react-native-draggable-flatlist';
@@ -8,20 +8,13 @@ import * as Haptics from 'expo-haptics';
 
 import CBWatchListItem from './CBWatchlistItem';
 import * as watchlistActions from '../store/actions/watchlist';
+import Coin from '../models/Coin';
 
 const CBWatchList: FC<any> = ({ coinData }) => {
   const dispatch = useDispatch();
 
-  type Item = {
-    id: number;
-    name: string;
-    symbol: string;
-    price: number;
-    percentChange: number;
-  };
-
   const renderItem = useCallback(
-    ({ item, drag, isActive }: RenderItemParams<Item>) => {
+    ({ item, drag, isActive }: RenderItemParams<Coin>) => {
       return (
         <CBWatchListItem
           id={item.id}
