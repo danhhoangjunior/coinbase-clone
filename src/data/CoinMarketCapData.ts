@@ -1,5 +1,5 @@
 // This data is provided by the CoinMarketCap API.
-// It is only used to get IDs for crypto logos
+// This is only used to get IDs for crypto logos
 let cmpData = {
   status: {
     timestamp: '2021-05-04T02:33:08.065Z',

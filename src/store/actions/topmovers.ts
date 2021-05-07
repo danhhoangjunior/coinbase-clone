@@ -17,8 +17,15 @@ export const fetchTopMoversData = () => {
       );
       const coinbaseResponseData = await coinbaseResponse.json();
 
-      coinbaseResponseData.filter((coin) => coin.quote_currency === 'USD');
-      coinbaseResponseData.forEach((coin) => {
+      interface data {
+        quote_currency: string;
+        base_currency: string;
+      }
+
+      coinbaseResponseData.filter(
+        (coin: data) => coin.quote_currency === 'USD'
+      );
+      coinbaseResponseData.forEach((coin: data) => {
         availableCoins.add(coin.base_currency);
       });
 
