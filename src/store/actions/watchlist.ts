@@ -2,13 +2,13 @@ import { Action } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { WatchlistState } from '../reducers/watchlist';
 import Coin from '../../models/Coin';
-import cmpData from './CoinMarketCapData';
+import cmpData from '../../data/CoinMarketCapData';
 
 export const SET_WATCHLIST_DATA = 'SET_WATCHLIST_DATA';
 
 export const fetchCoinData = () => {
   return async (dispatch: ThunkDispatch<WatchlistState, void, Action>) => {
-    const coins = ['ETC', 'EOS', 'XTZ', 'SUSHI', 'BTC', 'XLM'];
+    const coins = ['BTC', 'XRP', 'BCH', 'ETH', 'LINK', 'LTC'];
 
     try {
       const response = await fetch(`https://api.coincap.io/v2/assets`);
@@ -17,7 +17,6 @@ export const fetchCoinData = () => {
       const coinData: Coin[] = [];
       coins.forEach((coin) => {
         const data = resData.data.find((val: Coin) => val.symbol === coin);
-        console.log(data);
         coinData.push(
           new Coin(
             cmpData.data.find((coin) => data.symbol === coin.symbol).id,
