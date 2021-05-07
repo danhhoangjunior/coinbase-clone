@@ -1,25 +1,71 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { FC } from 'react';
+import React, { useState, useCallback, useEffect, FC } from 'react';
 import {
   StyleSheet,
   Text,
-  View,
-  TouchableHighlight,
-  Animated,
+  RefreshControl,
   ScrollView,
   SafeAreaView,
   Image,
+  LogBox,
 } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
+
+import * as watchlistActions from '../store/actions/watchlist';
+import * as topMoversActions from '../store/actions/topmovers';
+import { WatchlistState } from '../store/reducers/watchlist';
+import { TopMoversState } from '../store/reducers/topmovers';
+
 import CBButton from '../components/CBButton';
 import CBTopMovers from '../components/CBTopMovers';
 import CBWatchList from '../components/CBWatchlist';
 
+interface RootState {
+  watchlist: WatchlistState;
+  topMovers: TopMoversState;
+}
+
 const Home: FC = () => {
+  const watchlistData = useSelector(
+    (state: RootState) => state.watchlist.watchlistData
+  );
+
+  const topMoversData = useSelector(
+    (state: RootState) => state.topMovers.topMoversData
+  );
+
+  const dispatch = useDispatch();
+  const loadData = useCallback(async () => {
+    try {
+      dispatch(watchlistActions.fetchCoinData());
+      dispatch(topMoversActions.fetchTopMoversData());
+    } catch (err) {
+      console.log(err);
+    }
+  }, [dispatch]);
+
+  useEffect(() => {
+    LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
+    loadData();
+  }, [loadData]);
+
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    loadData().then(() => {
+      setRefreshing(false);
+    });
+  }, [loadData, refreshing]);
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView
         contentContainerStyle={{ alignItems: 'center' }}
         showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
       >
         <Image
           style={styles.image}
@@ -28,8 +74,8 @@ const Home: FC = () => {
         <Text style={styles.title}>Welcome to Coinbase!</Text>
         <Text style={styles.subtitle}>Make your first investment today</Text>
         <CBButton title='Buy crypto' />
-        <CBWatchList />
-        <CBTopMovers />
+        <CBWatchList coinData={watchlistData} />
+        <CBTopMovers coinData={topMoversData} />
         <StatusBar style='auto' />
       </ScrollView>
     </SafeAreaView>

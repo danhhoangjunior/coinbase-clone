@@ -8,31 +8,9 @@ import * as Haptics from 'expo-haptics';
 
 import CBWatchListItem from './CBWatchlistItem';
 import * as watchlistActions from '../store/actions/watchlist';
-import { WatchlistState } from '../store/reducers/watchlist';
 
-interface RootState {
-  watchlist: WatchlistState;
-}
-
-const CBWatchList: FC = () => {
-  const coinData = useSelector(
-    (state: RootState) => state.watchlist.watchlistData
-  );
-
+const CBWatchList: FC<any> = ({ coinData }) => {
   const dispatch = useDispatch();
-
-  const loadWatchlist = useCallback(async () => {
-    try {
-      dispatch(watchlistActions.fetchCoinData());
-    } catch (err) {
-      console.log(err);
-    }
-  }, [dispatch]);
-
-  useEffect(() => {
-    LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
-    loadWatchlist();
-  }, [loadWatchlist]);
 
   type Item = {
     id: number;

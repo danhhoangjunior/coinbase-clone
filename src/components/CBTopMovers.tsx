@@ -10,25 +10,7 @@ interface RootState {
   topMovers: TopMoversState;
 }
 
-const CBTopMovers: FC = () => {
-  const coinData = useSelector(
-    (state: RootState) => state.topMovers.topMoversData
-  );
-
-  const dispatch = useDispatch();
-
-  const loadTopMovers = useCallback(async () => {
-    try {
-      dispatch(topMoversActions.fetchTopMoversData());
-    } catch (err) {
-      console.log(err);
-    }
-  }, [dispatch]);
-
-  useEffect(() => {
-    loadTopMovers();
-  }, [loadTopMovers]);
-
+const CBTopMovers: FC<any> = ({ coinData }) => {
   type Item = {
     id: string;
     name: string;
