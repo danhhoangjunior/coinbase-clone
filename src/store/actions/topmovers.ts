@@ -30,7 +30,8 @@ export const fetchTopMoversData = () => {
 
       // Sort by percent change 24hrs (descending)
       coinMarketCapResponseData.data.sort((a: any, b: any) =>
-        parseFloat(a.changePercent24Hr) < parseFloat(b.changePercent24Hr)
+        Math.abs(parseFloat(a.changePercent24Hr)) <
+        Math.abs(parseFloat(b.changePercent24Hr))
           ? 1
           : -1
       );

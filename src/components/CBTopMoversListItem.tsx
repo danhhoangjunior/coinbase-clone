@@ -69,8 +69,19 @@ const CBTopMoversListItem: FC<TopMoversListItemProps> = ({
           </Text>
         </View>
         <View>
-          <Text style={styles.changeText} numberOfLines={1} selectable>
-            +{percentChange.toFixed(2)}%
+          <Text
+            style={[
+              {
+                color:
+                  percentChange > 0 ? 'rgb(11, 130, 82)' : 'rgb(204, 26, 46)',
+              },
+              styles.changeText,
+            ]}
+            numberOfLines={1}
+            selectable
+          >
+            {percentChange > 0 ? '+' : ''}
+            {percentChange.toFixed(2)}%
           </Text>
         </View>
       </Animated.View>
@@ -104,7 +115,6 @@ const styles = StyleSheet.create({
   changeText: {
     fontSize: 26,
     marginTop: 2,
-    color: 'rgb(11, 130, 82)',
   },
 });
 

@@ -68,6 +68,7 @@ const CBWatchListItem: FC<WatchlistItemProps> = ({
               styles.changeText,
             ]}
           >
+            {percentChange > 0 ? '+' : ''}
             {percentChange.toFixed(2)}%
           </Text>
         </View>
