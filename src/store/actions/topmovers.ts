@@ -23,13 +23,13 @@ export const fetchTopMoversData = () => {
         availableCoins.add(coin.base_currency);
       });
 
-      const coinMarketCapResponse = await fetch(
-        `https://api.coincap.io/v2/assets`
+      const coinCapResponse = await fetch(
+        `https://api.coincap.io/v2/assets?limit=2000`
       );
-      const coinMarketCapResponseData = await coinMarketCapResponse.json();
+      const coinCapResponseData = await coinCapResponse.json();
 
       // Sort by percent change 24hrs (descending)
-      coinMarketCapResponseData.data.sort((a: any, b: any) =>
+      coinCapResponseData.data.sort((a: any, b: any) =>
         Math.abs(parseFloat(a.changePercent24Hr)) <
         Math.abs(parseFloat(b.changePercent24Hr))
           ? 1
@@ -38,8 +38,12 @@ export const fetchTopMoversData = () => {
 
       // Get a maximum of 6 top movers which are available on Coinbase
       const coinData: Coin[] = [];
-      for (let data of coinMarketCapResponseData.data) {
-        if (availableCoins.has(data.symbol)) {
+      for (let data of coinCapResponseData.data) {
+        if (
+          availableCoins.has(data.symbol) &&
+          data.priceUsd !== null &&
+          data.changePercent24Hr != null
+        ) {
           // Find ID from CMP data, if it doesn't exist use 1
           const coinID =
             cmpData.data.find((coin) => data.symbol === coin.symbol)?.id ?? 1;

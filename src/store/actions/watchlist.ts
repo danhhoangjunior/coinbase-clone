@@ -12,12 +12,14 @@ export const fetchCoinData = () => {
     const coins = ['BTC', 'XRP', 'BCH', 'ETH', 'DOGE', 'LTC'];
 
     try {
-      const response = await fetch(`https://api.coincap.io/v2/assets`);
-      const resData = await response.json();
+      const coinCapResponse = await fetch(`https://api.coincap.io/v2/assets`);
+      const coinCapResponseData = await coinCapResponse.json();
 
       const coinData: Coin[] = [];
       coins.forEach((coin) => {
-        const data = resData.data.find((val: Coin) => val.symbol === coin);
+        const data = coinCapResponseData.data.find(
+          (val: Coin) => val.symbol === coin
+        );
         // Find ID from CMP data, if it doesn't exist use 1
         const coinID =
           cmpData.data.find((coin) => data.symbol === coin.symbol)?.id ?? 1;
