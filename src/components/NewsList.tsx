@@ -1,5 +1,51 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  FlatList,
+} from 'react-native';
+import NewsListItem from './NewsListItem';
+
+const tempData = [
+  {
+    id: '0',
+    outlet: 'Forbes',
+    date: 'May 07',
+    content:
+      'Citi Reportedly The Latest Bank To Consider Crypto After Soaring Client Interest',
+    image:
+      'https://images.theconversation.com/files/367489/original/file-20201104-15-f61v7g.jpg?ixlib=rb-1.1.0&rect=17%2C8%2C5953%2C3965&q=45&auto=format&w=926&fit=clip',
+  },
+  {
+    id: '1',
+    outlet: 'Forbes',
+    date: 'May 07',
+    content:
+      'Citi Reportedly The Latest Bank To Consider Crypto After Soaring Client Interest',
+    image:
+      'https://images.theconversation.com/files/367489/original/file-20201104-15-f61v7g.jpg?ixlib=rb-1.1.0&rect=17%2C8%2C5953%2C3965&q=45&auto=format&w=926&fit=clip',
+  },
+  {
+    id: '2',
+    outlet: 'Forbes',
+    date: 'May 07',
+    content:
+      'Citi Reportedly The Latest Bank To Consider Crypto After Soaring Client Interest',
+    image:
+      'https://images.theconversation.com/files/367489/original/file-20201104-15-f61v7g.jpg?ixlib=rb-1.1.0&rect=17%2C8%2C5953%2C3965&q=45&auto=format&w=926&fit=clip',
+  },
+  {
+    id: '3',
+    outlet: 'Forbes',
+    date: 'May 07',
+    content:
+      'Citi Reportedly The Latest Bank To Consider Crypto After Soaring Client Interest',
+    image:
+      'https://images.theconversation.com/files/367489/original/file-20201104-15-f61v7g.jpg?ixlib=rb-1.1.0&rect=17%2C8%2C5953%2C3965&q=45&auto=format&w=926&fit=clip',
+  },
+];
 
 const NewsList = () => {
   return (
@@ -15,6 +61,20 @@ const NewsList = () => {
           <Text style={styles.viewMoreButton}>View more</Text>
         </TouchableOpacity>
       </View>
+      <FlatList
+        scrollEnabled={false}
+        data={tempData}
+        renderItem={(itemData) => {
+          return (
+            <NewsListItem
+              outlet={itemData.item.outlet}
+              date={itemData.item.date}
+              content={itemData.item.content}
+              image={itemData.item.image}
+            />
+          );
+        }}
+      />
     </View>
   );
 };
