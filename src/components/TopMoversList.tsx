@@ -1,9 +1,14 @@
 import React, { FC } from 'react';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
+import Coin from '../models/Coin';
 
 import TopMoversListItem from './TopMoversListItem';
 
-const TopMovers: FC<any> = ({ coinData }) => {
+interface TopMoversProps {
+  coinData: Coin[];
+}
+
+const TopMovers: FC<TopMoversProps> = ({ coinData }) => {
   return (
     <View
       style={{

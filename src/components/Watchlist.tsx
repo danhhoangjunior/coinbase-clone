@@ -10,7 +10,11 @@ import WatchlistItem from './WatchlistItem';
 import * as watchlistActions from '../store/actions/watchlist';
 import Coin from '../models/Coin';
 
-const Watchlist: FC<any> = ({ coinData }) => {
+interface TopMoversProps {
+  coinData: Coin[];
+}
+
+const Watchlist: FC<TopMoversProps> = ({ coinData }) => {
   const dispatch = useDispatch();
 
   const renderItem = useCallback(

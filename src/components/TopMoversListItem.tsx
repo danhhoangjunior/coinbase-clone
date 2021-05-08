@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 interface TopMoversListItemProps {
-  id: string;
+  id: number;
   symbol: string;
   price: number;
   percentChange: number;
