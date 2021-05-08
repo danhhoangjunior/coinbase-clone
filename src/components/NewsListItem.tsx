@@ -11,7 +11,7 @@ const NewsListItem = (props) => {
   return (
     <TouchableHighlight
       style={styles.listItem}
-      underlayColor='#FAFBFE'
+      underlayColor='#FBFAFB'
       onPress={() => {}}
     >
       <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
@@ -32,9 +32,10 @@ const NewsListItem = (props) => {
 
 const styles = StyleSheet.create({
   listItem: {
-    height: 120,
+    height: 130,
     justifyContent: 'center',
-    paddingHorizontal: '6%',
+    paddingHorizontal: '5%',
+    borderRadius: 8,
   },
   textContainer: {
     width: '70%',
@@ -53,8 +54,8 @@ const styles = StyleSheet.create({
     lineHeight: 25,
   },
   image: {
-    width: 70,
-    height: 70,
+    width: 67,
+    height: 67,
     borderRadius: 8,
     alignSelf: 'center',
   },

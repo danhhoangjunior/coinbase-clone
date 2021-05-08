@@ -64,6 +64,7 @@ const NewsList = () => {
       <FlatList
         scrollEnabled={false}
         data={tempData}
+        style={{ marginHorizontal: 8 }}
         renderItem={(itemData) => {
           return (
             <NewsListItem
