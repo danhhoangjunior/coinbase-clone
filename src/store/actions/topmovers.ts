@@ -18,8 +18,11 @@ export const fetchTopMoversData = () => {
         base_currency: string;
       }
 
-      cbData.filter((coin: CBRequiredData) => coin.quote_currency === 'USD');
-      cbData.forEach((coin: CBRequiredData) => {
+      const filteredData = cbData.filter(
+        (coin: CBRequiredData) => coin.quote_currency === 'USD'
+      );
+
+      filteredData.forEach((coin: CBRequiredData) => {
         availableCoins.add(coin.base_currency);
       });
 
