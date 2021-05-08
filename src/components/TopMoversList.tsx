@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     fontSize: 21,
     marginTop: 32,
     marginBottom: 10,
-    marginLeft: 25,
+    marginLeft: '6%',
   },
   topMoversContainer: {
     height: 160,
