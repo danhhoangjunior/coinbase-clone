@@ -17,8 +17,8 @@ import { WatchlistState } from '../store/reducers/watchlist';
 import { TopMoversState } from '../store/reducers/topmovers';
 
 import CBButton from '../components/CBButton';
-import CBTopMovers from '../components/CBTopMovers';
-import CBWatchList from '../components/CBWatchlist';
+import TopMoversList from '../components/TopMoversList';
+import Watchlist from '../components/Watchlist';
 
 interface RootState {
   watchlist: WatchlistState;
@@ -77,8 +77,8 @@ const Home: FC = () => {
         <Text style={styles.title}>Welcome to Coinbase!</Text>
         <Text style={styles.subtitle}>Make your first investment today</Text>
         <CBButton title='Buy crypto' />
-        <CBWatchList coinData={watchlistData} />
-        <CBTopMovers coinData={topMoversData} />
+        <Watchlist coinData={watchlistData} />
+        <TopMoversList coinData={topMoversData} />
         <StatusBar style='auto' />
       </ScrollView>
     </SafeAreaView>

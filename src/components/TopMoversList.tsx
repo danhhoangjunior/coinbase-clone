@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
 
-import CBTopMoversListItem from './CBTopMoversListItem';
+import TopMoversListItem from './TopMoversListItem';
 
-const CBTopMovers: FC<any> = ({ coinData }) => {
+const TopMovers: FC<any> = ({ coinData }) => {
   return (
     <View
       style={{
@@ -23,7 +23,7 @@ const CBTopMovers: FC<any> = ({ coinData }) => {
         contentContainerStyle={styles.topMoversContainer}
         renderItem={(itemData) => {
           return (
-            <CBTopMoversListItem
+            <TopMoversListItem
               id={itemData.item.id}
               symbol={itemData.item.symbol}
               price={itemData.item.price}
@@ -50,4 +50,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CBTopMovers;
+export default TopMovers;

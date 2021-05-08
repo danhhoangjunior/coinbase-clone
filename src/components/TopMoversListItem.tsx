@@ -15,7 +15,7 @@ interface TopMoversListItemProps {
   percentChange: number;
 }
 
-const CBTopMoversListItem: FC<TopMoversListItemProps> = ({
+const TopMoversListItem: FC<TopMoversListItemProps> = ({
   id,
   symbol,
   price,
@@ -118,4 +118,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CBTopMoversListItem;
+export default TopMoversListItem;

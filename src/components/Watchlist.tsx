@@ -6,17 +6,17 @@ import DraggableFlatList, {
 } from 'react-native-draggable-flatlist';
 import * as Haptics from 'expo-haptics';
 
-import CBWatchListItem from './CBWatchlistItem';
+import WatchlistItem from './WatchlistItem';
 import * as watchlistActions from '../store/actions/watchlist';
 import Coin from '../models/Coin';
 
-const CBWatchList: FC<any> = ({ coinData }) => {
+const Watchlist: FC<any> = ({ coinData }) => {
   const dispatch = useDispatch();
 
   const renderItem = useCallback(
     ({ item, drag, isActive }: RenderItemParams<Coin>) => {
       return (
-        <CBWatchListItem
+        <WatchlistItem
           id={item.id}
           name={item.name}
           symbol={item.symbol}
@@ -75,4 +75,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CBWatchList;
+export default Watchlist;

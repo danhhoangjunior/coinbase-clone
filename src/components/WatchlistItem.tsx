@@ -17,7 +17,7 @@ interface WatchlistItemProps {
   isActive: any;
 }
 
-const CBWatchListItem: FC<WatchlistItemProps> = ({
+const WatchlistItem: FC<WatchlistItemProps> = ({
   id,
   name,
   symbol,
@@ -114,4 +114,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CBWatchListItem;
+export default WatchlistItem;
