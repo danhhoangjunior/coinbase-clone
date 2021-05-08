@@ -19,6 +19,7 @@ import { TopMoversState } from '../store/reducers/topmovers';
 import CBButton from '../components/CBButton';
 import TopMoversList from '../components/TopMoversList';
 import Watchlist from '../components/Watchlist';
+import NewsList from '../components/NewsList';
 
 interface RootState {
   watchlist: WatchlistState;
@@ -35,7 +36,6 @@ const Home: FC = () => {
   const [refreshing, setRefreshing] = React.useState(false);
 
   const dispatch = useDispatch();
-
   const loadData = useCallback(async () => {
     try {
       dispatch(watchlistActions.fetchCoinData());
@@ -79,6 +79,7 @@ const Home: FC = () => {
         <CBButton title='Buy crypto' />
         <Watchlist coinData={watchlistData} />
         <TopMoversList coinData={topMoversData} />
+        <NewsList />
         <StatusBar style='auto' />
       </ScrollView>
     </SafeAreaView>
