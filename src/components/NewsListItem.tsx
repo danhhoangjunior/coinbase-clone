@@ -43,9 +43,9 @@ const NewsListItem: FC<NewsListItemProps> = ({
 
 const styles = StyleSheet.create({
   listItem: {
-    height: 130,
     justifyContent: 'center',
     paddingHorizontal: '5%',
+    paddingVertical: '4%',
     borderRadius: 8,
   },
   textContainer: {
