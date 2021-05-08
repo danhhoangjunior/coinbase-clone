@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import {
   View,
   Text,
@@ -7,7 +7,19 @@ import {
   TouchableHighlight,
 } from 'react-native';
 
-const NewsListItem = (props) => {
+interface NewsListItemProps {
+  newsOutlet: string;
+  date: string;
+  content: string;
+  image: string;
+}
+
+const NewsListItem: FC<NewsListItemProps> = ({
+  newsOutlet,
+  date,
+  content,
+  image,
+}) => {
   return (
     <TouchableHighlight
       style={styles.listItem}
@@ -17,14 +29,13 @@ const NewsListItem = (props) => {
       <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
         <View style={styles.textContainer}>
           <Text style={styles.header}>
-            {props.outlet} <Text style={styles.bulletPoint}>•</Text>{' '}
-            {props.date}
+            {newsOutlet} <Text style={styles.bulletPoint}>•</Text> {date}
           </Text>
           <Text selectable style={styles.content}>
-            {props.content}
+            {content}
           </Text>
         </View>
-        <Image source={{ uri: props.image }} style={styles.image} />
+        <Image source={{ uri: image }} style={styles.image} />
       </View>
     </TouchableHighlight>
   );

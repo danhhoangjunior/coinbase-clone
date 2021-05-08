@@ -11,7 +11,7 @@ import NewsListItem from './NewsListItem';
 const tempData = [
   {
     id: '0',
-    outlet: 'Forbes',
+    newsOutlet: 'Forbes',
     date: 'May 07',
     content:
       "Ether Classic Has Climbed More Than 300% In The Last Week-- Here's Why",
@@ -20,7 +20,7 @@ const tempData = [
   },
   {
     id: '1',
-    outlet: 'Forbes',
+    newsOutlet: 'Forbes',
     date: 'May 07',
     content:
       'Citi Reportedly The Latest Bank To Consider Crypto After Soaring Client Interest',
@@ -29,7 +29,7 @@ const tempData = [
   },
   {
     id: '2',
-    outlet: 'Forbes',
+    newsOutlet: 'Forbes',
     date: 'May 07',
     content:
       'Citi Reportedly The Latest Bank To Consider Crypto After Soaring Client Interest',
@@ -38,7 +38,7 @@ const tempData = [
   },
   {
     id: '3',
-    outlet: 'Forbes',
+    newsOutlet: 'Forbes',
     date: 'May 07',
     content:
       'Citi Reportedly The Latest Bank To Consider Crypto After Soaring Client Interest',
@@ -68,7 +68,7 @@ const NewsList = () => {
         renderItem={(itemData) => {
           return (
             <NewsListItem
-              outlet={itemData.item.outlet}
+              newsOutlet={itemData.item.newsOutlet}
               date={itemData.item.date}
               content={itemData.item.content}
               image={itemData.item.image}
