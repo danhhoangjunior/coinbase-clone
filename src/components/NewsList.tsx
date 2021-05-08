@@ -14,7 +14,7 @@ const tempData = [
     outlet: 'Forbes',
     date: 'May 07',
     content:
-      'Citi Reportedly The Latest Bank To Consider Crypto After Soaring Client Interest',
+      "Ether Classic Has Climbed More Than 300% In The Last Week-- Here's Why",
     image:
       'https://images.theconversation.com/files/367489/original/file-20201104-15-f61v7g.jpg?ixlib=rb-1.1.0&rect=17%2C8%2C5953%2C3965&q=45&auto=format&w=926&fit=clip',
   },

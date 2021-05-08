@@ -20,7 +20,9 @@ const NewsListItem = (props) => {
             {props.outlet} <Text style={styles.bulletPoint}>•</Text>{' '}
             {props.date}
           </Text>
-          <Text style={styles.content}>{props.content}</Text>
+          <Text selectable style={styles.content}>
+            {props.content}
+          </Text>
         </View>
         <Image source={{ uri: props.image }} style={styles.image} />
       </View>
