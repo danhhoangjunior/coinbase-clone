@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
     marginBottom: 16,
+    borderRadius: 16,
   },
   tickerText: {
     fontSize: 15,
