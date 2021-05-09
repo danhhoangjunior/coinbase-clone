@@ -13,8 +13,10 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import * as watchlistActions from '../store/actions/watchlist';
 import * as topMoversActions from '../store/actions/topmovers';
+import * as newsActions from '../store/actions/news';
 import { WatchlistState } from '../store/reducers/watchlist';
 import { TopMoversState } from '../store/reducers/topmovers';
+import { NewsState } from '../store/reducers/news';
 
 import CBButton from '../components/CBButton';
 import TopMoversList from '../components/TopMoversList';
@@ -24,6 +26,7 @@ import NewsList from '../components/NewsList';
 interface RootState {
   watchlist: WatchlistState;
   topMovers: TopMoversState;
+  news: NewsState;
 }
 
 const Home: FC = () => {
@@ -33,6 +36,8 @@ const Home: FC = () => {
   const topMoversData = useSelector(
     (state: RootState) => state.topMovers.topMoversData
   );
+  const newsData = useSelector((state: RootState) => state.news.newsData);
+
   const [refreshing, setRefreshing] = React.useState(false);
 
   const dispatch = useDispatch();
@@ -40,6 +45,7 @@ const Home: FC = () => {
     try {
       dispatch(watchlistActions.fetchCoinData());
       dispatch(topMoversActions.fetchTopMoversData());
+      dispatch(newsActions.fetchNewsData());
     } catch (err) {
       console.log(err);
     }
@@ -79,7 +85,7 @@ const Home: FC = () => {
         <CBButton title='Buy crypto' />
         <Watchlist coinData={watchlistData} />
         <TopMoversList coinData={topMoversData} />
-        <NewsList newsData={newsListData} />
+        <NewsList newsData={newsData} />
         <StatusBar style='auto' />
       </ScrollView>
     </SafeAreaView>

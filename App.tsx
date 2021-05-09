@@ -14,11 +14,13 @@ import ReduxThunk from 'redux-thunk';
 
 import watchlistReducer from './src/store/reducers/watchlist';
 import topMoversReducer from './src/store/reducers/topmovers';
+import newsReducer from './src/store/reducers/news';
 import Home from './src/screens/Home';
 
 const rootReducer = combineReducers({
   watchlist: watchlistReducer,
   topMovers: topMoversReducer,
+  news: newsReducer,
 });
 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
