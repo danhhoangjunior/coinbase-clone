@@ -9,27 +9,30 @@ export const SET_WATCHLIST_DATA = 'SET_WATCHLIST_DATA';
 export const fetchCoinData = () => {
   return async (dispatch: ThunkDispatch<WatchlistState, void, Action>) => {
     // Will change when user can favorite coins
-    const coins = ['BTC', 'XRP', 'BCH', 'ETH', 'DOGE', 'LTC'];
+    const coins = ['BTC', 'XRP', 'BCH', 'ETH', 'ADA', 'LTC'];
 
     try {
-      const coinCapResponse = await fetch(`https://api.coincap.io/v2/assets`);
-      const coinCapResponseData = await coinCapResponse.json();
+      const cryptoResponse = await fetch(
+        `https://min-api.cryptocompare.com/data/pricemultifull?tsyms=USD&e=Coinbase&relaxedValidation=true&fsyms=${coins.join()}`
+      );
+      const cryptoResponseData = await cryptoResponse.json();
 
       const coinData: Coin[] = [];
       coins.forEach((coin) => {
-        const data = coinCapResponseData.data.find(
-          (val: Coin) => val.symbol === coin
-        );
         // Find ID from CMP data, if it doesn't exist use 1
-        const coinID =
-          cmpData.data.find((coin) => data.symbol === coin.symbol)?.id ?? 1;
+        const coinDetails = cryptoResponseData.RAW[coin].USD;
+        console.log(coinDetails);
+        const coinName =
+          cmpData.data.find(
+            (cmpCoin) => coinDetails.FROMSYMBOL === cmpCoin.symbol
+          )?.name ?? 'Unknown';
         coinData.push(
           new Coin(
-            coinID,
-            data.name,
-            data.symbol,
-            parseFloat(data.priceUsd),
-            parseFloat(data.changePercent24Hr)
+            coinDetails.IMAGEURL,
+            coinName,
+            coin,
+            coinDetails.PRICE,
+            coinDetails.CHANGEPCT24HOUR
           )
         );
       });

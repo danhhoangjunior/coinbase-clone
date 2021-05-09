@@ -33,6 +33,7 @@ const NewsList: FC<NewsProps> = ({ newsData }) => {
       <FlatList
         scrollEnabled={false}
         data={newsData}
+        keyExtractor={(item) => item.url}
         style={{ marginHorizontal: 8 }}
         renderItem={(itemData) => {
           return (

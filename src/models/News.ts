@@ -1,21 +1,21 @@
 export default class News {
-  id: number;
   newsOutlet: string;
   date: string;
   title: string;
   image: string;
+  url: string;
 
   constructor(
-    id: number,
     newsOutlet: string,
     date: string,
     title: string,
-    image: string
+    image: string,
+    url: string
   ) {
-    this.id = id;
     this.newsOutlet = newsOutlet;
     this.date = date;
     this.title = title;
     this.image = image;
+    this.url = url;
   }
 }
