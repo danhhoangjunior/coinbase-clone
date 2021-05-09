@@ -25,7 +25,6 @@ export const fetchNewsData = () => {
               .toString()
               .split(' ')
               .splice(1, 2)
-              .reverse()
               .join(' ')
               .toString(),
             news.title,

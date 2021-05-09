@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     marginHorizontal: '6%',
   },
   newsText: {
-    fontSize: 21,
+    fontSize: 20,
     fontWeight: '600',
   },
   viewMoreButton: {

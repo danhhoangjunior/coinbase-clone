@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     width: '75%',
   },
   header: {
-    color: 'rgb(79, 85, 102)',
+    color: 'rgb(91, 96, 109)',
     fontSize: 16,
     marginBottom: 5,
   },
