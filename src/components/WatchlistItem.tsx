@@ -100,6 +100,7 @@ const styles = StyleSheet.create({
   },
   nameText: {
     fontSize: 17,
+    width: 145,
   },
   tickerText: {
     color: 'rgb(79, 85, 102)',
