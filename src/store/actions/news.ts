@@ -38,8 +38,6 @@ export const fetchNewsData = () => {
         }
       }
 
-      console.log(newsData);
-
       dispatch({
         type: SET_NEWS_DATA,
         newsData: newsData,

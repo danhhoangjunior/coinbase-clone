@@ -44,12 +44,12 @@ const NewsListItem: FC<NewsListItemProps> = ({
 const styles = StyleSheet.create({
   listItem: {
     justifyContent: 'center',
-    paddingHorizontal: '5%',
+    paddingHorizontal: '4%',
     paddingVertical: '4%',
     borderRadius: 8,
   },
   textContainer: {
-    width: '70%',
+    width: '75%',
   },
   header: {
     color: 'rgb(79, 85, 102)',
@@ -69,6 +69,8 @@ const styles = StyleSheet.create({
     height: 67,
     borderRadius: 8,
     alignSelf: 'center',
+    borderWidth: 0.5,
+    borderColor: '#ccc',
   },
 });
 

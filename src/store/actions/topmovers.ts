@@ -42,7 +42,7 @@ export const fetchTopMoversData = () => {
 
       // Get a maximum of 6 top movers which are available on Coinbase
       const coinData: Coin[] = [];
-      for (let data of dataAsArray) {
+      for (const data of dataAsArray) {
         const cmpDetails = cmpData.data.find(
           (cmpCoin) => data.USD.FROMSYMBOL === cmpCoin.symbol
         );
