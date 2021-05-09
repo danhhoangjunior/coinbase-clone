@@ -8,6 +8,8 @@ import {
 } from 'react-native';
 import NewsListItem from './NewsListItem';
 
+import * as rssParser from 'react-native-rss-parser';
+
 const tempData = [
   {
     id: '0',
@@ -48,6 +50,20 @@ const tempData = [
 ];
 
 const NewsList = () => {
+  fetch(
+    'https://news.google.com/rss/search?q=bitcoin&hl=en-CA&gl=CA&ceid=CA:en'
+  )
+    .then((response) => response.text())
+    .then((responseData) => rssParser.parse(responseData))
+    .then((rss) => {
+      console.log(rss);
+      console.log(rss.title);
+      const stuff = rss.items.filter((item) =>
+        item.published.includes('08 May')
+      );
+      console.log(stuff.length);
+      stuff.forEach((item) => console.log(item.title));
+    });
   return (
     <View
       style={{
@@ -58,7 +74,9 @@ const NewsList = () => {
       <View style={styles.listHeader}>
         <Text style={styles.newsText}>News</Text>
         <TouchableOpacity onPress={() => {}}>
-          <Text style={styles.viewMoreButton}>View more</Text>
+          <Text selectable style={styles.viewMoreButton}>
+            View more
+          </Text>
         </TouchableOpacity>
       </View>
       <FlatList
