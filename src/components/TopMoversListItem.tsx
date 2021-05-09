@@ -55,7 +55,7 @@ const TopMoversListItem: FC<TopMoversListItemProps> = ({
         <Image
           style={styles.logo}
           source={{
-            uri: `https://s2.coinmarketcap.com/static/img/coins/64x64/${id.toString()}.png`,
+            uri: `https://www.cryptocompare.com/${id.toString()}`,
           }}
         />
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
