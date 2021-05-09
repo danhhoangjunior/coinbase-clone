@@ -20,7 +20,7 @@ export const fetchNewsData = () => {
       for (let news of responseData.Data) {
         newsData.push(
           new News(
-            news.source,
+            news.source_info.name,
             new Date(news.published_on * 1000)
               .toString()
               .split(' ')
