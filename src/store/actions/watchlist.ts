@@ -13,7 +13,7 @@ export const fetchCoinData = () => {
 
     try {
       const cryptoResponse = await fetch(
-        `https://min-api.cryptocompare.com/data/pricemultifull?tsyms=USD&e=Coinbase&relaxedValidation=true&fsyms=${coins.join()}`
+        `https://min-api.cryptocompare.com/data/pricemultifull?tsyms=USD&relaxedValidation=true&fsyms=${coins.join()}`
       );
       const cryptoResponseData = await cryptoResponse.json();
 
@@ -21,13 +21,14 @@ export const fetchCoinData = () => {
       coins.forEach((coin) => {
         // Find ID from CMP data, if it doesn't exist use 1
         const coinDetails = cryptoResponseData.RAW[coin].USD;
-        const coinName =
-          cmpData.data.find(
-            (cmpCoin) => coinDetails.FROMSYMBOL === cmpCoin.symbol
-          )?.name ?? 'Unknown';
+        const cmpDetails = cmpData.data.find(
+          (cmpCoin) => coinDetails.FROMSYMBOL === cmpCoin.symbol
+        );
+        const coinID = cmpDetails?.id;
+        const coinName = cmpDetails?.name;
         coinData.push(
           new Coin(
-            coinDetails.IMAGEURL,
+            coinID,
             coinName,
             coin,
             coinDetails.PRICE,

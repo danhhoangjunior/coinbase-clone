@@ -43,7 +43,7 @@ const WatchlistItem: FC<WatchlistItemProps> = ({
           <Image
             style={styles.logo}
             source={{
-              uri: `https://www.cryptocompare.com/${id.toString()}`,
+              uri: `https://s2.coinmarketcap.com/static/img/coins/64x64/${id.toString()}.png`,
             }}
           />
           <View>

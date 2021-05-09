@@ -27,28 +27,30 @@ export const fetchTopMoversData = () => {
       });
 
       const cryptoResponse = await fetch(
-        `https://min-api.cryptocompare.com/data/pricemultifull?tsyms=USD&e=Coinbase&relaxedValidation=true&fsyms=${availableCoins.join()}`
+        `https://min-api.cryptocompare.com/data/pricemultifull?tsyms=USD&relaxedValidation=true&fsyms=${availableCoins.join()}`
       );
       const cryptoResponseData = await cryptoResponse.json();
 
       let dataAsArray = Object.values(cryptoResponseData.RAW);
 
       // Sort by percent change 24hrs (descending)
-      dataAsArray.sort((a: any, b: any) => {
-        return Math.abs(a.USD.CHANGEPCT24HOUR) < Math.abs(b.USD.CHANGEPCT24HOUR)
+      dataAsArray.sort((a: any, b: any) =>
+        Math.abs(a.USD.CHANGEPCT24HOUR) < Math.abs(b.USD.CHANGEPCT24HOUR)
           ? 1
-          : -1;
-      });
+          : -1
+      );
 
       // Get a maximum of 6 top movers which are available on Coinbase
       const coinData: Coin[] = [];
       for (let data of dataAsArray) {
-        const coinName =
-          cmpData.data.find((cmpCoin) => data.USD.FROMSYMBOL === cmpCoin.symbol)
-            ?.name ?? 'Unknown';
+        const cmpDetails = cmpData.data.find(
+          (cmpCoin) => data.USD.FROMSYMBOL === cmpCoin.symbol
+        );
+        const coinID = cmpDetails?.id;
+        const coinName = cmpDetails?.name;
         coinData.push(
           new Coin(
-            data.USD.IMAGEURL,
+            coinID,
             coinName,
             data.USD.FROMSYMBOL,
             data.USD.PRICE,
