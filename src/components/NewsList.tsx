@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import {
   View,
   Text,
@@ -6,64 +6,15 @@ import {
   TouchableOpacity,
   FlatList,
 } from 'react-native';
+
 import NewsListItem from './NewsListItem';
+import News from '../models/News';
 
-import * as rssParser from 'react-native-rss-parser';
+interface NewsProps {
+  newsData: News[];
+}
 
-const tempData = [
-  {
-    id: '0',
-    newsOutlet: 'Forbes',
-    date: 'May 07',
-    content:
-      "Ether Classic Has Climbed More Than 300% In The Last Week-- Here's Why",
-    image:
-      'https://images.theconversation.com/files/367489/original/file-20201104-15-f61v7g.jpg?ixlib=rb-1.1.0&rect=17%2C8%2C5953%2C3965&q=45&auto=format&w=926&fit=clip',
-  },
-  {
-    id: '1',
-    newsOutlet: 'Forbes',
-    date: 'May 07',
-    content:
-      'Citi Reportedly The Latest Bank To Consider Crypto After Soaring Client Interest',
-    image:
-      'https://images.theconversation.com/files/367489/original/file-20201104-15-f61v7g.jpg?ixlib=rb-1.1.0&rect=17%2C8%2C5953%2C3965&q=45&auto=format&w=926&fit=clip',
-  },
-  {
-    id: '2',
-    newsOutlet: 'Forbes',
-    date: 'May 07',
-    content:
-      'Citi Reportedly The Latest Bank To Consider Crypto After Soaring Client Interest',
-    image:
-      'https://images.theconversation.com/files/367489/original/file-20201104-15-f61v7g.jpg?ixlib=rb-1.1.0&rect=17%2C8%2C5953%2C3965&q=45&auto=format&w=926&fit=clip',
-  },
-  {
-    id: '3',
-    newsOutlet: 'Forbes',
-    date: 'May 07',
-    content:
-      'Citi Reportedly The Latest Bank To Consider Crypto After Soaring Client Interest',
-    image:
-      'https://images.theconversation.com/files/367489/original/file-20201104-15-f61v7g.jpg?ixlib=rb-1.1.0&rect=17%2C8%2C5953%2C3965&q=45&auto=format&w=926&fit=clip',
-  },
-];
-
-const NewsList = () => {
-  fetch(
-    'https://news.google.com/rss/search?q=bitcoin&hl=en-CA&gl=CA&ceid=CA:en'
-  )
-    .then((response) => response.text())
-    .then((responseData) => rssParser.parse(responseData))
-    .then((rss) => {
-      console.log(rss);
-      console.log(rss.title);
-      const stuff = rss.items.filter((item) =>
-        item.published.includes('08 May')
-      );
-      console.log(stuff.length);
-      stuff.forEach((item) => console.log(item.title));
-    });
+const NewsList: FC<NewsProps> = ({ newsData }) => {
   return (
     <View
       style={{
@@ -81,14 +32,14 @@ const NewsList = () => {
       </View>
       <FlatList
         scrollEnabled={false}
-        data={tempData}
+        data={newsData}
         style={{ marginHorizontal: 8 }}
         renderItem={(itemData) => {
           return (
             <NewsListItem
               newsOutlet={itemData.item.newsOutlet}
               date={itemData.item.date}
-              content={itemData.item.content}
+              title={itemData.item.title}
               image={itemData.item.image}
             />
           );

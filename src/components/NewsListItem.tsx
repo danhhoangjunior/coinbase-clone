@@ -10,14 +10,14 @@ import {
 interface NewsListItemProps {
   newsOutlet: string;
   date: string;
-  content: string;
+  title: string;
   image: string;
 }
 
 const NewsListItem: FC<NewsListItemProps> = ({
   newsOutlet,
   date,
-  content,
+  title,
   image,
 }) => {
   return (
@@ -31,8 +31,8 @@ const NewsListItem: FC<NewsListItemProps> = ({
           <Text style={styles.header}>
             {newsOutlet} <Text style={styles.bulletPoint}>•</Text> {date}
           </Text>
-          <Text selectable style={styles.content}>
-            {content}
+          <Text selectable style={styles.title}>
+            {title}
           </Text>
         </View>
         <Image source={{ uri: image }} style={styles.image} />
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 18,
   },
-  content: {
+  title: {
     fontSize: 17,
     lineHeight: 25,
   },

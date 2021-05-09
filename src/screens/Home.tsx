@@ -79,7 +79,7 @@ const Home: FC = () => {
         <CBButton title='Buy crypto' />
         <Watchlist coinData={watchlistData} />
         <TopMoversList coinData={topMoversData} />
-        <NewsList />
+        <NewsList newsData={newsListData} />
         <StatusBar style='auto' />
       </ScrollView>
     </SafeAreaView>
