@@ -46,8 +46,9 @@ export const fetchTopMoversData = () => {
         const cmpDetails = cmpData.data.find(
           (cmpCoin) => data.USD.FROMSYMBOL === cmpCoin.symbol
         );
-        const coinID = cmpDetails?.id;
-        const coinName = cmpDetails?.name;
+        const coinID = cmpDetails?.id ?? 0;
+        const coinName = cmpDetails?.name ?? 'Unknown';
+
         coinData.push(
           new Coin(
             coinID,
