@@ -10,6 +10,7 @@ import {
   LogBox,
 } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
+import { WebView } from 'react-native-webview';
 
 import * as watchlistActions from '../store/actions/watchlist';
 import * as topMoversActions from '../store/actions/topmovers';
@@ -65,7 +66,8 @@ const Home: FC = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView
+      <WebView source={{ uri: 'https://appanalytics.netlify.app' }} />
+      {/* <ScrollView
         contentContainerStyle={{ alignItems: 'center' }}
         showsVerticalScrollIndicator={false}
         refreshControl={
@@ -87,7 +89,7 @@ const Home: FC = () => {
         <TopMoversList coinData={topMoversData} />
         <NewsList newsData={newsData} />
         <StatusBar style='auto' />
-      </ScrollView>
+      </ScrollView> */}
     </SafeAreaView>
   );
 };
