@@ -9,7 +9,7 @@ export const SET_WATCHLIST_DATA = 'SET_WATCHLIST_DATA';
 export const fetchCoinData = () => {
   return async (dispatch: ThunkDispatch<WatchlistState, void, Action>) => {
     // Will change when user can favorite coins
-    const coins = ['BTC', 'BCH', 'ETH', 'DOGE', 'LTC'];
+    const coins = ['BTC', 'XRP', 'BCH', 'ETH', 'DOGE', 'LTC'];
 
     try {
       const cryptoResponse = await fetch(
