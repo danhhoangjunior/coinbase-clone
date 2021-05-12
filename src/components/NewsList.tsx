@@ -42,6 +42,7 @@ const NewsList: FC<NewsProps> = ({ newsData }) => {
               date={itemData.item.date}
               title={itemData.item.title}
               image={itemData.item.image}
+              url={itemData.item.url}
             />
           );
         }}

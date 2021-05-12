@@ -6,12 +6,14 @@ import {
   Image,
   TouchableHighlight,
 } from 'react-native';
+import * as WebBrowser from 'expo-web-browser';
 
 interface NewsListItemProps {
   newsOutlet: string;
   date: string;
   title: string;
   image: string;
+  url: string;
 }
 
 const NewsListItem: FC<NewsListItemProps> = ({
@@ -19,12 +21,15 @@ const NewsListItem: FC<NewsListItemProps> = ({
   date,
   title,
   image,
+  url,
 }) => {
   return (
     <TouchableHighlight
       style={styles.listItem}
       underlayColor='#FBFAFB'
-      onPress={() => {}}
+      onPress={async () => {
+        await WebBrowser.openBrowserAsync(url);
+      }}
     >
       <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
         <View style={styles.textContainer}>
