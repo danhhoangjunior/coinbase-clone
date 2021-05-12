@@ -1,7 +1,6 @@
 import { Action } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { NewsState } from '../reducers/news';
-import * as rssParser from 'react-native-rss-parser';
 
 import News from '../../models/News';
 
@@ -10,14 +9,15 @@ export const SET_NEWS_DATA = 'SET_NEWS_DATA';
 export const fetchNewsData = () => {
   return async (dispatch: ThunkDispatch<NewsState, void, Action>) => {
     try {
+      // Fetch news from cryptocompare API
       const response = await fetch(
         'https://min-api.cryptocompare.com/data/v2/news/?lang=EN'
       );
       const responseData = await response.json();
 
+      // Get the five latest news articles
       let newsData: News[] = [];
-
-      for (let news of responseData.Data) {
+      for (const news of responseData.Data) {
         newsData.push(
           new News(
             news.source_info.name,
