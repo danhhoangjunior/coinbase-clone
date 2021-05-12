@@ -3,7 +3,6 @@ import { ThunkDispatch } from 'redux-thunk';
 import { TopMoversState } from '../reducers/topmovers';
 import Coin from '../../models/Coin';
 import cmpData from '../../data/CoinMarketCapData';
-import cbData from '../../data/CoinbaseData';
 
 export const SET_TOPMOVERS_DATA = 'SET_TOPMOVERS_DATA';
 
@@ -46,8 +45,10 @@ export const fetchTopMoversData = () => {
       // Get a maximum of 6 top movers which are available on Coinbase
       const coinData: Coin[] = [];
       for (const data of dataAsArray) {
+        const cryptoData: any = data;
+        // Get ID and name from coin market cap data
         const cmpDetails = cmpData.data.find(
-          (cmpCoin) => data.USD.FROMSYMBOL === cmpCoin.symbol
+          (cmpCoin) => cryptoData.USD.FROMSYMBOL === cmpCoin.symbol
         );
         const coinID = cmpDetails?.id ?? 0;
         const coinName = cmpDetails?.name ?? 'Unknown';
@@ -56,12 +57,12 @@ export const fetchTopMoversData = () => {
           new Coin(
             coinID,
             coinName,
-            data.USD.FROMSYMBOL,
-            data.USD.PRICE,
-            data.USD.CHANGEPCT24HOUR
+            cryptoData.USD.FROMSYMBOL,
+            cryptoData.USD.PRICE,
+            cryptoData.USD.CHANGEPCT24HOUR
           )
         );
-        if (coinData.length === 60) {
+        if (coinData.length === 6) {
           break;
         }
       }
