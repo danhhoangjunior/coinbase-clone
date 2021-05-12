@@ -11,14 +11,16 @@ export const fetchTopMoversData = () => {
   return async (dispatch: ThunkDispatch<TopMoversState, void, Action>) => {
     try {
       // Get all coins available on Coinbase
+      const cbResponse = await fetch('https://api.pro.coinbase.com/products');
+      const cbResponseData = await cbResponse.json();
+
       let availableCoins: string[] = [];
 
       interface CBRequiredData {
         quote_currency: string;
         base_currency: string;
       }
-
-      const filteredData = cbData.filter(
+      const filteredData = cbResponseData.filter(
         (coin: CBRequiredData) => coin.quote_currency === 'USD'
       );
 
@@ -26,6 +28,7 @@ export const fetchTopMoversData = () => {
         availableCoins.push(coin.base_currency);
       });
 
+      // Get coin prices from cryptocompare API
       const cryptoResponse = await fetch(
         `https://min-api.cryptocompare.com/data/pricemultifull?tsyms=USD&relaxedValidation=true&fsyms=${availableCoins.join()}`
       );
