@@ -28,7 +28,9 @@ const NewsListItem: FC<NewsListItemProps> = ({
       style={styles.listItem}
       underlayColor='#FBFAFB'
       onPress={async () => {
-        await WebBrowser.openBrowserAsync(url);
+        await WebBrowser.openBrowserAsync(url, {
+          readerMode: true,
+        });
       }}
     >
       <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
