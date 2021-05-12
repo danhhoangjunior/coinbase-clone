@@ -18,15 +18,16 @@ export const fetchNewsData = () => {
       // Get the five latest news articles
       let newsData: News[] = [];
       for (const news of responseData.Data) {
+        const formattedDate = new Date(news.published_on * 1000)
+          .toString()
+          .split(' ')
+          .splice(1, 2)
+          .join(' ');
+
         newsData.push(
           new News(
             news.source_info.name,
-            new Date(news.published_on * 1000)
-              .toString()
-              .split(' ')
-              .splice(1, 2)
-              .join(' ')
-              .toString(),
+            formattedDate,
             news.title,
             news.imageurl,
             news.url
