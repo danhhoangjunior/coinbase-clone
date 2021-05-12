@@ -16,6 +16,12 @@ interface NewsListItemProps {
   url: string;
 }
 
+async function handleNewsPress(url: string) {
+  await WebBrowser.openBrowserAsync(url, {
+    readerMode: true,
+  });
+}
+
 const NewsListItem: FC<NewsListItemProps> = ({
   newsOutlet,
   date,
@@ -27,11 +33,7 @@ const NewsListItem: FC<NewsListItemProps> = ({
     <TouchableHighlight
       style={styles.listItem}
       underlayColor='#FBFAFB'
-      onPress={async () => {
-        await WebBrowser.openBrowserAsync(url, {
-          readerMode: true,
-        });
-      }}
+      onPress={handleNewsPress.bind(this, url)}
     >
       <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
         <View style={styles.textContainer}>
