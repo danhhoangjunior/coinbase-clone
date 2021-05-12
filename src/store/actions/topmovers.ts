@@ -61,7 +61,7 @@ export const fetchTopMoversData = () => {
             data.USD.CHANGEPCT24HOUR
           )
         );
-        if (coinData.length === 6) {
+        if (coinData.length === 60) {
           break;
         }
       }

@@ -103,6 +103,8 @@ const styles = StyleSheet.create({
     height: 32,
     marginBottom: 16,
     borderRadius: 16,
+    borderWidth: 0.5,
+    borderColor: 'rgb(223, 225, 226)',
   },
   tickerText: {
     fontSize: 15,
