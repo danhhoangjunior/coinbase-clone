@@ -16,12 +16,6 @@ interface NewsListItemProps {
   url: string;
 }
 
-async function handleNewsPress(url: string) {
-  await WebBrowser.openBrowserAsync(url, {
-    readerMode: true,
-  });
-}
-
 const NewsListItem: FC<NewsListItemProps> = ({
   newsOutlet,
   date,
@@ -29,6 +23,15 @@ const NewsListItem: FC<NewsListItemProps> = ({
   image,
   url,
 }) => {
+  const handleNewsPress = async (url: string) => {
+    await WebBrowser.openBrowserAsync(url, {
+      readerMode: true,
+      controlsColor: '#0053f8',
+      dismissButtonStyle: 'close',
+      toolbarColor: '#FFFFFF',
+    });
+  };
+
   return (
     <TouchableHighlight
       style={styles.listItem}
