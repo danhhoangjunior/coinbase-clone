@@ -7,6 +7,7 @@ import {
   TouchableHighlight,
 } from 'react-native';
 import * as WebBrowser from 'expo-web-browser';
+import Colors from '../constants/Colors';
 
 interface NewsListItemProps {
   newsOutlet: string;
@@ -26,9 +27,9 @@ const NewsListItem: FC<NewsListItemProps> = ({
   const handleNewsPress = async (url: string) => {
     await WebBrowser.openBrowserAsync(url, {
       readerMode: true,
-      controlsColor: '#0053f8',
+      controlsColor: Colors.cbBlue,
       dismissButtonStyle: 'close',
-      toolbarColor: '#FFFFFF',
+      toolbarColor: 'white',
     });
   };
 

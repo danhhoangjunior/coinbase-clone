@@ -9,6 +9,7 @@ import * as Haptics from 'expo-haptics';
 import WatchlistItem from './WatchlistItem';
 import * as watchlistActions from '../store/actions/watchlist';
 import Coin from '../models/Coin';
+import Colors from '../constants/Colors';
 
 interface TopMoversProps {
   coinData: Coin[];
@@ -74,7 +75,7 @@ const styles = StyleSheet.create({
     width: '88%',
     borderWidth: 1,
     borderRadius: 8,
-    borderColor: 'rgb(223, 225, 226)',
+    borderColor: Colors.border,
     backgroundColor: 'white',
   },
 });

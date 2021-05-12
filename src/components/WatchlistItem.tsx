@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Image,
 } from 'react-native';
+import Colors from '../constants/Colors';
 
 interface WatchlistItemProps {
   id: number;
@@ -63,7 +64,7 @@ const WatchlistItem: FC<WatchlistItemProps> = ({
             style={[
               {
                 color:
-                  percentChange > 0 ? 'rgb(11, 130, 82)' : 'rgb(204, 26, 46)',
+                  percentChange > 0 ? Colors.positiveGreen : Colors.negativeRed,
               },
               styles.changeText,
             ]}
@@ -98,14 +99,14 @@ const styles = StyleSheet.create({
     marginRight: 16,
     borderRadius: 16,
     borderWidth: 0.5,
-    borderColor: 'rgb(223, 225, 226)',
+    borderColor: Colors.border,
   },
   nameText: {
     fontSize: 17,
     width: 145,
   },
   tickerText: {
-    color: 'rgb(79, 85, 102)',
+    color: Colors.secondarySubtitle,
     fontSize: 16,
   },
   priceText: {

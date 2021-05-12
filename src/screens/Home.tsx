@@ -22,6 +22,7 @@ import CBButton from '../components/CBButton';
 import TopMoversList from '../components/TopMoversList';
 import Watchlist from '../components/Watchlist';
 import NewsList from '../components/NewsList';
+import Colors from '../constants/Colors';
 
 interface RootState {
   watchlist: WatchlistState;
@@ -112,7 +113,7 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 17,
     marginBottom: 24,
-    color: 'rgb(92, 98, 110)',
+    color: Colors.subtitle,
   },
 });
 

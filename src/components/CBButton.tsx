@@ -7,6 +7,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import * as Haptics from 'expo-haptics';
+import Colors from '../constants/Colors';
 
 interface CBButtonProps {
   title: string;
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
     height: 57,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'rgb(0, 82, 248)',
+    backgroundColor: Colors.cbBlue,
     borderRadius: 10,
   },
   btnText: {

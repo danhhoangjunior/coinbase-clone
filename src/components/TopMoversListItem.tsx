@@ -8,6 +8,8 @@ import {
   Animated,
 } from 'react-native';
 
+import Colors from '../constants/Colors';
+
 interface TopMoversListItemProps {
   id: number;
   symbol: string;
@@ -73,7 +75,7 @@ const TopMoversListItem: FC<TopMoversListItemProps> = ({
             style={[
               {
                 color:
-                  percentChange > 0 ? 'rgb(11, 130, 82)' : 'rgb(204, 26, 46)',
+                  percentChange > 0 ? Colors.positiveGreen : Colors.negativeRed,
               },
               styles.changeText,
             ]}
@@ -94,7 +96,7 @@ const styles = StyleSheet.create({
     width: 143,
     borderWidth: 1,
     borderRadius: 8,
-    borderColor: 'rgb(223, 225, 226)',
+    borderColor: Colors.border,
     paddingHorizontal: 16,
     paddingVertical: 25,
   },
@@ -104,7 +106,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     borderRadius: 16,
     borderWidth: 0.5,
-    borderColor: 'rgb(223, 225, 226)',
+    borderColor: Colors.border,
   },
   tickerText: {
     fontSize: 15,
@@ -113,7 +115,7 @@ const styles = StyleSheet.create({
   },
   priceText: {
     fontSize: 15,
-    color: 'rgb(79, 85, 102)',
+    color: Colors.secondarySubtitle,
   },
   changeText: {
     fontSize: 26,

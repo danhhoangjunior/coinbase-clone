@@ -9,6 +9,7 @@ import {
 
 import NewsListItem from './NewsListItem';
 import News from '../models/News';
+import Colors from '../constants/Colors';
 
 interface NewsProps {
   newsData: News[];
@@ -65,7 +66,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   viewMoreButton: {
-    color: 'rgb(0, 82, 248)',
+    color: Colors.cbBlue,
     fontSize: 18,
     fontWeight: '600',
   },
