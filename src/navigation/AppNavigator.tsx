@@ -1,16 +1,21 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from 'react-native-screens/native-stack';
 
 import HomeScreen, { screenOptions as HomeOptions } from '../screens/Home';
 import NewsScreen from '../screens/News';
 
-const HomeStackNavigator = createStackNavigator();
+const HomeStackNavigator = createNativeStackNavigator();
 
 const HomeNavigator = () => {
   return (
-    <HomeStackNavigator.Navigator>
+    <HomeStackNavigator.Navigator
+      screenOptions={{
+        headerHideShadow: true,
+        headerBackTitleVisible: false,
+      }}
+    >
       <HomeStackNavigator.Screen
         name='Home'
         component={HomeScreen}
