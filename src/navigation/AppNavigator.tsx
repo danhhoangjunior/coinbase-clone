@@ -22,7 +22,7 @@ const TabBarNavigator = createBottomTabNavigator();
 const TabNavigator = () => {
   return (
     <TabBarNavigator.Navigator>
-      <TabBarNavigator.Screen name='Screens' component={HomeScreen} />
+      <TabBarNavigator.Screen name='HomeTab' component={HomeNavigator} />
     </TabBarNavigator.Navigator>
   );
 };

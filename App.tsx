@@ -15,7 +15,7 @@ import ReduxThunk from 'redux-thunk';
 import watchlistReducer from './src/store/reducers/watchlist';
 import topMoversReducer from './src/store/reducers/topmovers';
 import newsReducer from './src/store/reducers/news';
-import Home from './src/screens/Home';
+import AppNavigator from './src/navigation/AppNavigator';
 
 const rootReducer = combineReducers({
   watchlist: watchlistReducer,
@@ -28,7 +28,7 @@ const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 export default function App() {
   return (
     <Provider store={store}>
-      <Home />
+      <AppNavigator />
     </Provider>
   );
 }
