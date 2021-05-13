@@ -13,9 +13,10 @@ import Colors from '../constants/Colors';
 
 interface NewsProps {
   newsData: News[];
+  viewMoreHandler: any;
 }
 
-const NewsList: FC<NewsProps> = ({ newsData }) => {
+const NewsList: FC<NewsProps> = ({ newsData, viewMoreHandler }) => {
   return (
     <View
       style={{
@@ -25,7 +26,7 @@ const NewsList: FC<NewsProps> = ({ newsData }) => {
     >
       <View style={styles.listHeader}>
         <Text style={styles.newsText}>News</Text>
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity onPress={viewMoreHandler}>
           <Text selectable style={styles.viewMoreButton}>
             View more
           </Text>

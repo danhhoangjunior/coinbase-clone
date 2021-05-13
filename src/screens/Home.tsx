@@ -30,7 +30,7 @@ interface RootState {
   news: NewsState;
 }
 
-const Home: FC = () => {
+const Home: FC = (props) => {
   const watchlistData = useSelector(
     (state: RootState) => state.watchlist.watchlistData
   );
@@ -64,6 +64,10 @@ const Home: FC = () => {
     });
   }, [loadData, refreshing]);
 
+  const viewMoreHandler = () => {
+    props.navigation.navigate('News');
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView
@@ -86,11 +90,17 @@ const Home: FC = () => {
         <CBButton title='Buy crypto' />
         <Watchlist coinData={watchlistData} />
         <TopMoversList coinData={topMoversData} />
-        <NewsList newsData={newsData} />
+        <NewsList newsData={newsData} viewMoreHandler={viewMoreHandler} />
         <StatusBar style='auto' />
       </ScrollView>
     </SafeAreaView>
   );
+};
+
+export const screenOptions = () => {
+  return {
+    headerShown: false,
+  };
 };
 
 const styles = StyleSheet.create({
