@@ -90,7 +90,11 @@ const Home: FC = (props) => {
         <CBButton title='Buy crypto' />
         <Watchlist coinData={watchlistData} />
         <TopMoversList coinData={topMoversData} />
-        <NewsList newsData={newsData} viewMoreHandler={viewMoreHandler} />
+        <NewsList
+          newsData={newsData}
+          isHomeScreen={true}
+          viewMoreHandler={viewMoreHandler}
+        />
         <StatusBar style='auto' />
       </ScrollView>
     </SafeAreaView>

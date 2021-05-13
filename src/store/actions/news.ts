@@ -33,7 +33,7 @@ export const fetchNewsData = () => {
             news.url
           )
         );
-        if (newsData.length === 5) {
+        if (newsData.length === 20) {
           break;
         }
       }

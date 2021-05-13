@@ -13,10 +13,15 @@ import Colors from '../constants/Colors';
 
 interface NewsProps {
   newsData: News[];
-  viewMoreHandler: any;
+  isHomeScreen: boolean;
+  viewMoreHandler?: any;
 }
 
-const NewsList: FC<NewsProps> = ({ newsData, viewMoreHandler }) => {
+const NewsList: FC<NewsProps> = ({
+  newsData,
+  isHomeScreen,
+  viewMoreHandler,
+}) => {
   return (
     <View
       style={{
@@ -24,17 +29,20 @@ const NewsList: FC<NewsProps> = ({ newsData, viewMoreHandler }) => {
         alignSelf: 'flex-start',
       }}
     >
-      <View style={styles.listHeader}>
-        <Text style={styles.newsText}>News</Text>
-        <TouchableOpacity onPress={viewMoreHandler}>
-          <Text selectable style={styles.viewMoreButton}>
-            View more
-          </Text>
-        </TouchableOpacity>
-      </View>
+      {isHomeScreen && (
+        <View style={styles.listHeader}>
+          <Text style={styles.newsText}>News</Text>
+          <TouchableOpacity onPress={viewMoreHandler}>
+            <Text selectable style={styles.viewMoreButton}>
+              View more
+            </Text>
+          </TouchableOpacity>
+        </View>
+      )}
       <FlatList
-        scrollEnabled={false}
-        data={newsData}
+        scrollEnabled={!isHomeScreen}
+        showsVerticalScrollIndicator={false}
+        data={isHomeScreen ? newsData.slice(0, 5) : newsData}
         keyExtractor={(item) => item.url}
         style={{ marginHorizontal: 8 }}
         renderItem={(itemData) => {
