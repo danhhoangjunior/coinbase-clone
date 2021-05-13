@@ -4,18 +4,14 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from 'react-native-screens/native-stack';
 
 import HomeScreen, { screenOptions as HomeOptions } from '../screens/Home';
-import NewsScreen from '../screens/News';
+import NewsScreen, { screenOptions as NewsOptions } from '../screens/News';
+import { Text, TouchableOpacity } from 'react-native';
 
 const HomeStackNavigator = createNativeStackNavigator();
 
 const HomeNavigator = () => {
   return (
-    <HomeStackNavigator.Navigator
-      screenOptions={{
-        headerHideShadow: true,
-        headerBackTitleVisible: false,
-      }}
-    >
+    <HomeStackNavigator.Navigator screenOptions={NewsOptions}>
       <HomeStackNavigator.Screen
         name='Home'
         component={HomeScreen}

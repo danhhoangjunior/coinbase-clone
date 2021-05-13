@@ -1,6 +1,7 @@
 import React, { FC, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 import NewsList from '../components/NewsList';
 import * as newsActions from '../store/actions/news';
@@ -18,6 +19,26 @@ const News: FC = () => {
       <NewsList newsData={newsData} isHomeScreen={false} />
     </View>
   );
+};
+
+export const screenOptions = (navData) => {
+  return {
+    headerHideShadow: true,
+    headerHideBackButton: true,
+    headerTitleStyle: { fontWeight: '700' },
+    headerLeft: () => {
+      return (
+        <TouchableOpacity
+          onPress={() => {
+            navData.navigation.goBack();
+          }}
+          style={{ marginLeft: 5 }}
+        >
+          <Ionicons name='chevron-back-outline' size={21} />
+        </TouchableOpacity>
+      );
+    },
+  };
 };
 
 const styles = StyleSheet.create({
