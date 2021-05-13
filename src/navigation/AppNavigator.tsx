@@ -5,7 +5,6 @@ import { createNativeStackNavigator } from 'react-native-screens/native-stack';
 
 import HomeScreen, { screenOptions as HomeOptions } from '../screens/Home';
 import NewsScreen, { screenOptions as NewsOptions } from '../screens/News';
-import { Text, TouchableOpacity } from 'react-native';
 
 const HomeStackNavigator = createNativeStackNavigator();
 

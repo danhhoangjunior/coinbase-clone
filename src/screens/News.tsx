@@ -1,10 +1,9 @@
-import React, { FC, useCallback, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { FC } from 'react';
+import { useSelector } from 'react-redux';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import NewsList from '../components/NewsList';
-import * as newsActions from '../store/actions/news';
 import { NewsState } from '../store/reducers/news';
 
 interface RootState {
