@@ -37,10 +37,6 @@ const TabBar = ({ state, descriptors, navigation }) => {
 
         return (
           <TouchableOpacity
-            accessibilityRole='button'
-            accessibilityState={isFocused ? { selected: true } : {}}
-            accessibilityLabel={options.tabBarAccessibilityLabel}
-            testID={options.tabBarTestID}
             onPress={onPress}
             onLongPress={onLongPress}
             style={{ flex: 1 }}
