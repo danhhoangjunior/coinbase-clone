@@ -20,6 +20,8 @@ const TabBar = ({ state, descriptors, navigation }) => {
           navigation.navigate(route.name);
         };
 
+        const isActions = route.name == 'Actions';
+
         let iconName;
         switch (route.name) {
           case 'Home':
@@ -60,23 +62,35 @@ const TabBar = ({ state, descriptors, navigation }) => {
               onPress={onPress}
               onPressIn={handlePressIn}
               onPressOut={handlePressOut}
-              style={{ alignItems: 'center' }}
             >
-              <Ionicons
-                name={iconName}
-                size={20}
-                color={isFocused ? Colors.cbBlue : Colors.subtitle}
-                style={{ marginBottom: 2 }}
-              />
-              <Text
-                style={[
-                  { color: isFocused ? Colors.cbBlue : Colors.subtitle },
-                  styles.tabBarText,
-                ]}
-                selectable
-              >
-                {route.name}
-              </Text>
+              {isActions ? (
+                <View style={styles.actionsButton}>
+                  <Ionicons
+                    name='swap-horizontal'
+                    size={20}
+                    color='white'
+                    //style={{ marginBottom: 2 }}
+                  />
+                </View>
+              ) : (
+                <View style={{ alignItems: 'center' }}>
+                  <Ionicons
+                    name={iconName}
+                    size={20}
+                    color={isFocused ? Colors.cbBlue : Colors.subtitle}
+                    style={{ marginBottom: 2 }}
+                  />
+                  <Text
+                    style={[
+                      { color: isFocused ? Colors.cbBlue : Colors.subtitle },
+                      styles.tabBarText,
+                    ]}
+                    selectable
+                  >
+                    {route.name}
+                  </Text>
+                </View>
+              )}
             </TouchableOpacity>
           </Animated.View>
         );
@@ -96,11 +110,20 @@ const styles = StyleSheet.create({
   },
   tabBarItem: {
     marginTop: 10,
-    width: 50,
+    width: 60,
   },
   tabBarText: {
     fontSize: 10,
     fontWeight: '700',
+  },
+  actionsButton: {
+    width: 45,
+    height: 45,
+    backgroundColor: Colors.cbBlue,
+    borderRadius: 22.5,
+    alignSelf: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 

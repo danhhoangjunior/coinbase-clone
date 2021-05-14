@@ -9,6 +9,7 @@ import NewsScreen, { screenOptions as NewsOptions } from '../screens/News';
 import PortfolioScreen from '../screens/Portfolio';
 import PricesScreen from '../screens/Prices';
 import SettingsScreen from '../screens/Settings';
+import ActionsScreen from '../screens/Actions';
 
 const HomeStackNavigator = createNativeStackNavigator();
 
@@ -32,6 +33,7 @@ const TabNavigator = () => {
     <TabBarNavigator.Navigator tabBar={(props) => <TabBar {...props} />}>
       <TabBarNavigator.Screen name='Home' component={HomeNavigator} />
       <TabBarNavigator.Screen name='Portfolio' component={PortfolioScreen} />
+      <TabBarNavigator.Screen name='Actions' component={ActionsScreen} />
       <TabBarNavigator.Screen name='Prices' component={PricesScreen} />
       <TabBarNavigator.Screen name='Settings' component={SettingsScreen} />
     </TabBarNavigator.Navigator>
