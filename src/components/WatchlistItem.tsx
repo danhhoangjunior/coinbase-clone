@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
   listItem: {
     flexDirection: 'row',
     width: '100%',
-    height: 70,
+    height: 75,
     padding: 16,
     justifyContent: 'space-between',
   },
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     height: 32,
     marginRight: 16,
     borderRadius: 16,
-    borderWidth: 0.5,
+    borderWidth: 0.3,
     borderColor: Colors.border,
   },
   nameText: {

@@ -45,7 +45,7 @@ const Watchlist: FC<TopMoversProps> = ({ coinData }) => {
     >
       <Text style={styles.watchlistText}>Watchlist</Text>
       <View
-        style={[{ height: coinData.length * 70 }, styles.watchlistContainer]}
+        style={[{ height: coinData.length * 75 }, styles.watchlistContainer]}
       >
         <DraggableFlatList
           data={coinData}
