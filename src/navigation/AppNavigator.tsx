@@ -16,7 +16,7 @@ const HomeNavigator = () => {
   return (
     <HomeStackNavigator.Navigator screenOptions={NewsOptions}>
       <HomeStackNavigator.Screen
-        name='Home'
+        name='HomeScreen'
         component={HomeScreen}
         options={HomeOptions}
       />
@@ -30,10 +30,10 @@ const TabBarNavigator = createBottomTabNavigator();
 const TabNavigator = () => {
   return (
     <TabBarNavigator.Navigator tabBar={(props) => <TabBar {...props} />}>
-      <TabBarNavigator.Screen name='HomeTab' component={HomeNavigator} />
-      <TabBarNavigator.Screen name='PortfolioTab' component={PortfolioScreen} />
-      <TabBarNavigator.Screen name='PricesTab' component={PricesScreen} />
-      <TabBarNavigator.Screen name='SettingsTab' component={SettingsScreen} />
+      <TabBarNavigator.Screen name='Home' component={HomeNavigator} />
+      <TabBarNavigator.Screen name='Portfolio' component={PortfolioScreen} />
+      <TabBarNavigator.Screen name='Prices' component={PricesScreen} />
+      <TabBarNavigator.Screen name='Settings' component={SettingsScreen} />
     </TabBarNavigator.Navigator>
   );
 };
