@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from 'react-native-screens/native-stack';
 
+import TabBar from '../components/TabBar';
 import HomeScreen, { screenOptions as HomeOptions } from '../screens/Home';
 import NewsScreen, { screenOptions as NewsOptions } from '../screens/News';
 
@@ -25,7 +26,7 @@ const TabBarNavigator = createBottomTabNavigator();
 
 const TabNavigator = () => {
   return (
-    <TabBarNavigator.Navigator>
+    <TabBarNavigator.Navigator tabBar={(props) => <TabBar {...props} />}>
       <TabBarNavigator.Screen name='HomeTab' component={HomeNavigator} />
     </TabBarNavigator.Navigator>
   );

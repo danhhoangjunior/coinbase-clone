@@ -31,7 +31,7 @@ export const screenOptions = (navData) => {
           onPress={() => {
             navData.navigation.goBack();
           }}
-          style={{ marginLeft: 5 }}
+          style={{ marginLeft: 3 }}
         >
           <Ionicons name='chevron-back-outline' size={21} />
         </TouchableOpacity>
