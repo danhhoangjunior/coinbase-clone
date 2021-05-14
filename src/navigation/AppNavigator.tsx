@@ -6,6 +6,9 @@ import { createNativeStackNavigator } from 'react-native-screens/native-stack';
 import TabBar from '../components/TabBar';
 import HomeScreen, { screenOptions as HomeOptions } from '../screens/Home';
 import NewsScreen, { screenOptions as NewsOptions } from '../screens/News';
+import PortfolioScreen from '../screens/Portfolio';
+import PricesScreen from '../screens/Prices';
+import SettingsScreen from '../screens/Settings';
 
 const HomeStackNavigator = createNativeStackNavigator();
 
@@ -28,6 +31,9 @@ const TabNavigator = () => {
   return (
     <TabBarNavigator.Navigator tabBar={(props) => <TabBar {...props} />}>
       <TabBarNavigator.Screen name='HomeTab' component={HomeNavigator} />
+      <TabBarNavigator.Screen name='PortfolioTab' component={PortfolioScreen} />
+      <TabBarNavigator.Screen name='PricesTab' component={PricesScreen} />
+      <TabBarNavigator.Screen name='SettingsTab' component={SettingsScreen} />
     </TabBarNavigator.Navigator>
   );
 };
