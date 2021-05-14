@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
   },
   tabBarItem: {
     marginTop: 10,
+    width: 50,
   },
   tabBarText: {
     fontSize: 10,
