@@ -17,7 +17,15 @@ const TabBar = ({ state, descriptors, navigation }) => {
         const isFocused = state.index === index;
 
         const onPress = () => {
-          navigation.navigate(route.name);
+          const event = navigation.emit({
+            type: 'tabPress',
+            target: route.key,
+            canPreventDefault: true,
+          });
+
+          if (!isFocused && !event.defaultPrevented) {
+            navigation.navigate(route.name);
+          }
         };
 
         const isActions = route.name == 'Actions';
@@ -57,7 +65,13 @@ const TabBar = ({ state, descriptors, navigation }) => {
         };
 
         return (
-          <Animated.View style={[styles.tabBarItem, animatedStyle]}>
+          <Animated.View
+            style={[
+              styles.tabBarItem,
+              isActions ? { marginTop: 7 } : { marginTop: 10 },
+              animatedStyle,
+            ]}
+          >
             <TouchableOpacity
               onPress={onPress}
               onPressIn={handlePressIn}
@@ -65,12 +79,7 @@ const TabBar = ({ state, descriptors, navigation }) => {
             >
               {isActions ? (
                 <View style={styles.actionsButton}>
-                  <Ionicons
-                    name='swap-horizontal'
-                    size={20}
-                    color='white'
-                    //style={{ marginBottom: 2 }}
-                  />
+                  <Ionicons name='swap-horizontal' size={20} color='white' />
                 </View>
               ) : (
                 <View style={{ alignItems: 'center' }}>
@@ -109,7 +118,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
   },
   tabBarItem: {
-    marginTop: 10,
     width: 60,
   },
   tabBarText: {
@@ -117,10 +125,10 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   actionsButton: {
-    width: 45,
-    height: 45,
+    width: 42,
+    height: 42,
     backgroundColor: Colors.cbBlue,
-    borderRadius: 22.5,
+    borderRadius: 21,
     alignSelf: 'center',
     justifyContent: 'center',
     alignItems: 'center',
