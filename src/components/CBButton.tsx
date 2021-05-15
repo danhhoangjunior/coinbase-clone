@@ -33,6 +33,7 @@ const CBButton: FC<CBButtonProps> = ({ title }) => {
   const animatedStyle = {
     transform: [{ scale: animatedValue }],
   };
+
   return (
     <Animated.View style={[styles.btnContainer, animatedStyle]}>
       <TouchableHighlight

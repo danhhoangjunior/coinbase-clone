@@ -11,7 +11,12 @@ import PricesScreen from '../screens/Prices';
 import SettingsScreen from '../screens/Settings';
 import ActionsScreen from '../screens/Actions';
 
-const HomeStackNavigator = createNativeStackNavigator();
+export type RootStackParamList = {
+  HomeScreen: undefined;
+  News: undefined;
+};
+
+const HomeStackNavigator = createNativeStackNavigator<RootStackParamList>();
 
 const HomeNavigator = () => {
   return (

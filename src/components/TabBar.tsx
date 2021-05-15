@@ -6,15 +6,18 @@ import {
   StyleSheet,
   Animated,
 } from 'react-native';
+import * as Haptics from 'expo-haptics';
 import { Ionicons } from '@expo/vector-icons';
+import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 
 import Colors from '../constants/Colors';
 
-const TabBar = ({ state, descriptors, navigation }) => {
+const TabBar = ({ state, navigation }: BottomTabBarProps) => {
   return (
     <View style={styles.tabBar}>
       {state.routes.map((route, index) => {
         const isFocused = state.index === index;
+        const isActions = route.name == 'Actions';
 
         const onPress = () => {
           const event = navigation.emit({
@@ -26,9 +29,11 @@ const TabBar = ({ state, descriptors, navigation }) => {
           if (!isFocused && !event.defaultPrevented) {
             navigation.navigate(route.name);
           }
-        };
 
-        const isActions = route.name == 'Actions';
+          if (isActions) {
+            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+          }
+        };
 
         let iconName;
         switch (route.name) {
@@ -44,6 +49,7 @@ const TabBar = ({ state, descriptors, navigation }) => {
           default:
             iconName = 'person';
         }
+
         const animatedValue = new Animated.Value(1);
 
         const handlePressIn = () => {
@@ -84,7 +90,7 @@ const TabBar = ({ state, descriptors, navigation }) => {
               ) : (
                 <View style={{ alignItems: 'center' }}>
                   <Ionicons
-                    name={iconName}
+                    name={iconName as any}
                     size={20}
                     color={isFocused ? Colors.cbBlue : Colors.subtitle}
                     style={{ marginBottom: 2 }}

@@ -10,12 +10,7 @@ interface TopMoversProps {
 
 const TopMovers: FC<TopMoversProps> = ({ coinData }) => {
   return (
-    <View
-      style={{
-        width: '100%',
-        alignSelf: 'flex-start',
-      }}
-    >
+    <View style={styles.list}>
       <Text style={styles.topMoversText}>Top movers</Text>
       <FlatList
         data={coinData}
@@ -42,6 +37,10 @@ const TopMovers: FC<TopMoversProps> = ({ coinData }) => {
 };
 
 const styles = StyleSheet.create({
+  list: {
+    width: '100%',
+    alignSelf: 'flex-start',
+  },
   topMoversText: {
     fontWeight: '600',
     fontSize: 21,

@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useCallback, useEffect, FC } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -10,6 +10,9 @@ import {
   LogBox,
 } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
+import { useScrollToTop } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../navigation/AppNavigator';
 
 import * as watchlistActions from '../store/actions/watchlist';
 import * as topMoversActions from '../store/actions/topmovers';
@@ -30,7 +33,16 @@ interface RootState {
   news: NewsState;
 }
 
-const Home: FC = (props) => {
+type HomeScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  'HomeScreen'
+>;
+
+type Props = {
+  navigation: HomeScreenNavigationProp;
+};
+
+const Home = ({ navigation }: Props) => {
   const watchlistData = useSelector(
     (state: RootState) => state.watchlist.watchlistData
   );
@@ -39,7 +51,7 @@ const Home: FC = (props) => {
   );
   const newsData = useSelector((state: RootState) => state.news.newsData);
 
-  const [refreshing, setRefreshing] = React.useState(false);
+  const [refreshing, setRefreshing] = useState(false);
 
   const dispatch = useDispatch();
   const loadData = useCallback(async () => {
@@ -65,14 +77,18 @@ const Home: FC = (props) => {
   }, [loadData, refreshing]);
 
   const viewMoreHandler = () => {
-    props.navigation.navigate('News');
+    navigation.navigate('News');
   };
+
+  const ref = useRef(null);
+  useScrollToTop(ref);
 
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView
         contentContainerStyle={{ alignItems: 'center' }}
         showsVerticalScrollIndicator={false}
+        ref={ref}
         refreshControl={
           <RefreshControl
             tintColor='rgb(233, 233, 243)'
