@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "coinbase-clone",
+    "description": "This is a work-in-progress clone of the Coinbase mobile app. https://github.com/arjun-dureja/coinbase-clone",
     "slug": "coinbase-clone",
     "version": "1.0.0",
     "orientation": "portrait",
