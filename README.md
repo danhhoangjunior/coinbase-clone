@@ -1,3 +1,5 @@
+![License](https://img.shields.io/github/license/arjun-dureja/coinbase-clone) ![Stars](https://img.shields.io/github/stars/arjun-dureja/coinbase-clone?style=flat) ![Last Commit](https://img.shields.io/github/last-commit/arjun-dureja/coinbase-clone)
+
 # Coinbase Clone
 
 A work-in-progress clone of the [Coinbase](https://apps.apple.com/us/app/coinbase-buy-sell-bitcoin/id886427730) mobile app built with [React Native](https://reactnative.dev/) and TypeScript.
