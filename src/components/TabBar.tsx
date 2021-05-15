@@ -18,6 +18,7 @@ const TabBar = ({ state, navigation }: BottomTabBarProps) => {
       {state.routes.map((route, index) => {
         const isFocused = state.index === index;
         const isActions = route.name == 'Actions';
+        const itemColor = isFocused ? Colors.cbBlue : Colors.subtitle;
 
         const onPress = () => {
           const event = navigation.emit({
@@ -92,14 +93,11 @@ const TabBar = ({ state, navigation }: BottomTabBarProps) => {
                   <Ionicons
                     name={iconName as any}
                     size={20}
-                    color={isFocused ? Colors.cbBlue : Colors.subtitle}
+                    color={itemColor}
                     style={{ marginBottom: 2 }}
                   />
                   <Text
-                    style={[
-                      { color: isFocused ? Colors.cbBlue : Colors.subtitle },
-                      styles.tabBarText,
-                    ]}
+                    style={[{ color: itemColor }, styles.tabBarText]}
                     selectable
                   >
                     {route.name}
