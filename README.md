@@ -1,4 +1,4 @@
-![License](https://img.shields.io/github/license/arjun-dureja/coinbase-clone) ![Stars](https://img.shields.io/github/stars/arjun-dureja/coinbase-clone?style=flat) ![Last Commit](https://img.shields.io/github/last-commit/arjun-dureja/coinbase-clone)
+![License](https://img.shields.io/badge/License-MIT-yellow.svg) ![Stars](https://img.shields.io/github/stars/arjun-dureja/coinbase-clone?style=flat) ![Last Commit](https://img.shields.io/github/last-commit/arjun-dureja/coinbase-clone)
 
 # Coinbase Clone
 
