@@ -2,4 +2,4 @@
 
 This is a work-in-progress clone of the Coinbase mobile app.
 
-![Video](https://user-images.githubusercontent.com/16995513/118372306-fff9cd80-b57e-11eb-9624-e558468be6e5.MP4)
+https://user-images.githubusercontent.com/16995513/118372757-1dc83200-b581-11eb-8c6d-8d1d8f7df10c.MP4
