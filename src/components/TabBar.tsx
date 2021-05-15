@@ -78,6 +78,7 @@ const TabBar = ({ state, navigation }: BottomTabBarProps) => {
               isActions ? { marginTop: 7 } : { marginTop: 10 },
               animatedStyle,
             ]}
+            key={route.name}
           >
             <TouchableOpacity
               onPress={onPress}
